@@ -1,0 +1,80 @@
+/* line 5, ../scss/index.scss */
+#container-header {
+  height: 33px;
+  border: 1px solid #cccccc;
+  background: #f1f2f2;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+  left: 20px;
+}
+/* line 12, ../scss/index.scss */
+#container-header div {
+  padding: 5px 8px 5px 8px;
+}
+/* line 17, ../scss/index.scss */
+#container-header h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 4px;
+  display: block;
+}
+
+/* line 26, ../scss/index.scss */
+#container-content {
+  background: white;
+  border: 1px solid #cccccc;
+  overflow-y: auto;
+  position: absolute;
+  top: 143px;
+  right: 20px;
+  bottom: 145px;
+  left: 20px;
+}
+
+/* line 34, ../scss/index.scss */
+#div-nav {
+  padding: 10px;
+}
+/* line 38, ../scss/index.scss */
+#div-nav a {
+  color: #4382b0;
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* line 44, ../scss/index.scss */
+#div-nav a:hover {
+  color: #ff8040;
+}
+
+/* line 51, ../scss/index.scss */
+.nav-selected {
+  font-weight: bold;
+}
+
+/* line 56, ../scss/index.scss */
+#div-details {
+  border: 1px solid #cccccc;
+  height: 100px;
+  background: #f1f2f2;
+  overflow-y: auto;
+  position: absolute;
+  right: 20px;
+  bottom: 45px;
+  left: 20px;
+}
+/* line 64, ../scss/index.scss */
+#div-details div.title {
+  padding: 10px;
+  font-weight: bold;
+}
+/* line 70, ../scss/index.scss */
+#div-details div.tooltip {
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+/* line 75, ../scss/index.scss */
+#div-details table {
+  width: 100%;
+}

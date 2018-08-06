@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC
+        "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+    <title>Controle de Acesso - Seja bem-vindo(a)</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../../web/img/favicon.ico"/>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../../web/img/favicon.ico"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/jquery-ui-1.10.2.custom/css/redmond/jquery-ui-1.10.2.custom.min.css"/>
+    <link rel="stylesheet" href="../../../web/css/padrao.css"/>
+    <link rel="stylesheet" href="../../../web/css/template.css"/>
+    <link rel="stylesheet" href="../../../web/css/index.css"/>
+    <!--<link rel="stylesheet" href="../../../web/js/plugins/jquery.tipsy/tipsy.css"/>-->
+    <link rel="stylesheet" href="../../../web/css/menu.css"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/kendoui.web.2013.2.716.open-source/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/kendoui.web.2013.2.716.open-source/styles/kendo.default.min.css"/>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/jquery-ui-1.10.2.custom/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <!--<script type="text/javascript"
+            src="../../../web/js/plugins/jquery.tipsy/jquery.tipsy.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/Menu.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/Utils.js"></script>-->
+    <!--<script type="text/javascript"
+            src="../../../web/js/Camera.js"></script>-->
+    <script type="text/javascript"
+            src="../../../web/js/portal/PortalJSController.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/IndexJSController.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/kendoui.web.2013.2.716.open-source/js/kendo.web.min.js"></script>
+    <!-- TODO importando o js não está funcionando -->
+    <script type="text/javascript">
+        var video, canvas, context, localMediaStream;
+        //Tira foto.
+        function snapshot() {
+            if( localMediaStream ) {
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                document.querySelector('#img-photo').src = canvas.toDataURL('image/webp');
+                $( '#fotoInicial').hide();
+                $( '#fotoFinal').show();
+                $( '#app2').show();
+                $( '#dadosCadastrados').show();
+                $( '#takephoto').hide();
+            }
+        }
+        //Fallback de erro a função getUserMedia.
+        function userMediaError() {
+        }
+        window.onload = function() {
+            if(!!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia)){
+                video = document.getElementById('video');
+                canvas = document.getElementById('canvas');
+                context = canvas.getContext('2d');
+            } else {
+                alert("Desculpa! Seu navegador não apresenta suporte.");
+            }
+        };
+        navigator.getMedia = ( navigator.getUserMedia ||
+                navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia ||
+                navigator.msGetUserMedia
+                );
+        navigator.getMedia({video: true}, function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+            localMediaStream = stream;
+        }, userMediaError());
+
+    </script>
+</head>
+<body>
+<div id="container-top">
+    <div class="right">
+        <div>
+            <table cellpadding="0" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td><a href="">Usuário Demonstração</a></td>
+                    <td class="separator">|</td>
+                    <td><a href="login.html">Sair</a></td>
+                    <td class="separator">|</td>
+                    <td><a href="">Ajuda</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="container-title">
+    <div id="search" class="right">
+        <form id="search_form" name="search_form" action="" method="GET">
+            <input type="text" id="q" name="q" value="">
+        </form>
+    </div>
+    <div class="left">
+        <a href="">
+        <table cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td><img src="../../../web/img/logo_asten.png" alt=""></td>
+                <td style="padding-left: 10px;">
+                    <img src="../../../web/img/logo_controle_acessos.png" alt="">
+                    <br/>
+                        <span class="upper bold">
+                            <a href="">AVMB CONSULTORIA E ASSESSORIA EM INFORMÁTICA</a>
+                        </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </a>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<!--<div class="shortcut shadow">
+    <table cellspacing="5" cellpadding="5">
+        <tbody>
+        <tr>
+            <td>
+                <a href="" title="Início">
+                    <img src="../../../web/img/home.png" alt="">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="" title="Andamento dos Processos">
+                    <img src="../../../web/img/andamento.png" alt="">
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="" title="Notícias">
+                    <img src="../../../web/img/news.png" alt="">
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>-->
+
+<div class="divMenu">
+    <ul id="menu">
+        <li>
+            Cadastrar
+            <ul> <!-- moving the UL to the next line will cause an IE7 problem -->
+                <li><a href="cadastro_pessoas.html">Pessoas</a></li>
+                <li><a href="cadastro_locais.html">Locais</a></li>
+                <li><a href="cadastro_usuarios.html">Usuarios</a></li>
+            </ul>
+
+        </li>
+        <li>
+            Relatórios
+            <ul> <!-- moving the UL to the next line will cause an IE7 problem -->
+                <li><a href="visitas_local.html">Registros Por Local de Entrada</a></li>
+                <li><a href="visitas_tipo_pessoa.html">Registros Por Tipo de Pessoa</a></li>
+                <li><a href="visitas_horario.html">Registros Por Horário</a></li>
+                <li><a href="visitas_unidade_interna.html">Registros Por Unidade Interna</a></li>
+                <li><a href="pessoas_presentes.html">Pessoas Presentes/Ausentes</a></li>
+                <li><a href="agendamento_visitas.html">Agendamento de Visitas</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!--<div class="divMenu">lala
+</div>-->
+<div id="container-header">
+    <div>
+        <h2>Conferência Webcam</h2>
+    </div>
+</div>
+<div id="container-content">
+    <div>
+        <table cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    <!--<div id="div-nav">
+                        Você está em: <a href="">Início</a> » <span class="nav-selected">Conferência Webcam</span>
+                    </div>-->
+                    <div>
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="menu">
+                                        <div id="app1" class="bold webcam">
+                                            <div class="left" id="fotoInicial">
+                                                <div><video autoplay id='video' width='400' height='300'></video></div>
+
+                                            </div>
+                                            <div class="left" style="display: none;" id="fotoFinal">
+                                                <div><img src="" id='img-photo' width='400px;' height='300px;'></div>
+                                                <div><canvas style='display:none;' id='canvas' width='400' height='300'></canvas></div>
+                                            </div>
+                                        </div>
+                                        <div id="app2" class="bold webcam hide">
+                                            <img src="../../../web/img/imagem-militar-homem.jpg" width="400" height="300" alt="foto militar">
+                                        </div>
+                                        <div id="dadosCadastrados" class="left bold hide">
+                                            <table>
+                                                <tr><td>CÉSAR AUGUSTO MOURA</td></tr>
+                                                <tr><td>60 ANOS</td></tr>
+                                                <tr><td>CASADO</td></tr>
+                                                <tr><td>CORONEL</td></tr>
+                                            </table>
+                                        </div>
+                                        <div><input type='button' class="k-button" value='Simular Entrada' id='takephoto' onClick="snapshot();" /></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="container-bottom">
+    <div>
+        Copyright © 2013 <a href="http://www.avmb.com.br" target="_blank">AVMB Consultoria e Assessoria</a>. Todos os
+        direitos reservados.
+    </div>
+</div>
+</body>
+</html>
+
+
+

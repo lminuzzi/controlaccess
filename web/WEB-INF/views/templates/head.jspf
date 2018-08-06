@@ -1,0 +1,13 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<title>
+    @PROJECT.NAME.LONG@ :: <decorator:title default="Bem-vindo(a)"/>
+</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="<c:url value="/img/favicon.ico"/>"/>
+
+<!-- CSS -->
+<jwr:style src="/bundles/template.css"/>
+
+<!-- JS -->
+<jwr:script src="/bundles/template.js"/>

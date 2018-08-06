@@ -1,0 +1,71 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<!-- Inicialmente vamos zerar os selecionados -->
+<c:set var="selected" value=""/>
+
+<c:if test="${not empty fcDestino}">
+    <!-- seleciona o primeiro -->
+    <c:set var="selected" value="${customfn:split(fcDestino, '###')[0]}"/>
+    <c:if test="${not empty selected}">
+        <c:set var="selected" value="${fn:trim(selected)}"/>
+    </c:if>
+</c:if>
+
+<!-- mesmo valor definido no desktop -->
+<c:if test="${fieldHeight== null || empty fieldHeight}">
+    <c:set var="fieldHeight" value="90"/>
+</c:if>
+
+<c:set value="${campo.required}" var="required"/>
+
+<table width="${fieldSize}px" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <c:choose>
+                <c:when test="${not empty campo.hint}">
+                    <tag:hint id="${acao.id}" text="${campo.hint}">
+                        <tag:label label="${campo.descricao}" cursorPointer="true" lineBreak="true"
+                                     required="${required}"/>
+                    </tag:hint>
+                </c:when>
+                <c:otherwise>
+                    <tag:label label="${campo.descricao}" lineBreak="true" required="${required}"/>
+                </c:otherwise>
+            </c:choose>
+
+            <div class="div-radio" name="${acao.id}" style="height: ${fieldHeight}px;" obrigatorio="${required}"
+                 <c:if test="${campo.readonly}">readonly="readonly"</c:if>>
+
+                <c:if test="${not empty fcOrigem}">
+                    <table cellpadding="0" cellspacing="0">
+                        <c:forEach items="${customfn:split(fcOrigem, '###')}" var="radio" varStatus="i">
+                            <c:set var="radio" value="${fn:trim(radio)}"/>
+
+                            <tr>
+                                <td width="5px">
+                                    <input type="radio"
+                                           id="radio${acao.id}${i.index}"
+                                           name="${acao.id}"
+                                           value="${radio}"
+                                           variavel="${campo.destino.id}"
+                                            <c:if test="${(not empty selected) && (radio == selected)}">
+                                                checked="checked"
+                                            </c:if>
+                                            <c:if test="${campo.readonly}">
+                                                disabled="disabled"
+                                                readonly="readonly"
+                                            </c:if>/>
+                                </td>
+                                <td>
+                                    <label for="radio${acao.id}${i.index}">
+                                            ${radio}
+                                    </label>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:if>
+            </div>
+        </td>
+    </tr>
+</table>

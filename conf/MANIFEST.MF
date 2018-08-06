@@ -1,0 +1,3 @@
+Implementation-Title: @PROJECT.NAME.LONG@
+Implementation-Version: @PROJECT.VERSION.LONG@
+Implementation-Vendor: @PROJECT.PUBLISHER@

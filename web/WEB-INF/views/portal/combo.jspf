@@ -1,0 +1,50 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<%-- para limpar o selected antes, pois se existe dois combox essa variável fica setada com o valor do primeiro --%>
+<c:set var="selected" value=""/>
+
+<c:if test="${not empty fcDestino}">
+    <!-- seleciona o primeiro -->
+    <c:set var="selected" value="${customfn:split(fcDestino, '###')[0]}"/>
+    <c:if test="${not empty selected}">
+        <c:set var="selected" value="${fn:trim(selected)}"/>
+    </c:if>
+</c:if>
+
+<c:choose>
+    <c:when test="${not empty campo.hint}">
+        <tag:hint id="${acao.id}" text="${campo.hint}">
+            <tag:label label="${campo.descricao}" cursorPointer="true" lineBreak="true" required="${campo.required}"/>
+        </tag:hint>
+    </c:when>
+    <c:otherwise>
+        <tag:label label="${campo.descricao}" lineBreak="true" required="${campo.required}"/>
+    </c:otherwise>
+</c:choose>
+
+<select id="${acao.id}"
+        name="${acao.id}"
+        obrigatorio="${campo.required}"
+        class="obrigatorio"
+        style="width: ${fieldSize}px;"
+        variavel="${campo.destino.id}"
+        <c:if test="${campo.readonly}">
+            disabled="disabled"
+            readonly="readonly"
+        </c:if>>
+    <c:choose>
+        <c:when test="${empty fcOrigem}">
+            <option value=""></option>
+        </c:when>
+        <c:otherwise>
+            <option value="" <c:if test="${empty selected}">selected</c:if>></option>
+            <c:forEach items="${customfn:split(fcOrigem, '###')}" var="option">
+                <c:set var="option" value="${fn:trim(option)}"/>
+                <option value="${option}"
+                        <c:if test="${(not empty selected) && (option == selected)}">selected</c:if>>
+                    <c:out value="${option}"/>
+                </option>
+            </c:forEach>
+        </c:otherwise>
+    </c:choose>
+</select>

@@ -1,0 +1,198 @@
+/* line 5, ../scss/index.scss */
+#container-header
+{
+    height: 33px;
+    border: 1px solid #cccccc;
+    background: #f1f2f2;
+    position: absolute;
+    top: 160px;
+    right: 10px;
+    left: 10px;
+}
+
+.webcam
+{
+    border: 1px solid;
+    overflow-y: hidden;
+    float: left;
+    height: 300px;
+    width: 400px;
+    text-align: left;
+    margin: 10px 25px 25px;
+    color: #666666;
+}
+
+#dadosCadastrados
+{
+    margin: 25px 25px 25px;
+    text-align: left;
+}
+
+/* line 12, ../scss/index.scss */
+#container-header div
+{
+    padding: 5px 8px 5px 8px;
+}
+
+/* line 17, ../scss/index.scss */
+#container-header h2
+{
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 4px;
+    display: block;
+}
+
+/* line 26, ../scss/index.scss */
+#container-content
+{
+    background: white;
+    border: 1px solid #cccccc;
+    overflow-y: auto;
+    position: absolute;
+    top: 193px;
+    right: 10px;
+    bottom: 145px;
+    left: 10px;
+    height: 375px;
+    padding: 10px 0 0 5px;
+}
+
+/* line 41, ../../scss/portal/portal.scss */
+#container-grid {
+    width: 400px;
+    border: 3px solid #cccccc;
+    color: #999999;
+    position: absolute;
+    top: 110px;
+    right: 20px;
+    bottom: 45px;
+    overflow: auto;
+    background: black url("../img/bg_andamento.png") repeat-x;
+}
+/* line 55, ../../scss/portal/portal.scss */
+#container-grid tr th:hover {
+    cursor: default;
+}
+/* line 64, ../../scss/portal/portal.scss */
+#container-grid tbody tr:hover {
+    background-color: #232323;
+    cursor: pointer;
+}
+/* line 71, ../../scss/portal/portal.scss */
+#container-grid th {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 7px;
+    border-bottom: 1px solid #666666;
+    color: white;
+}
+/* line 81, ../../scss/portal/portal.scss */
+#container-grid td {
+    font-weight: bold;
+    padding: 7px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-bottom: 1px solid #666666;
+}
+
+/* line 34, ../scss/index.scss */
+#div-nav
+{
+    padding: 10px;
+    position: relative;
+    top: 30px;
+}
+
+/* line 38, ../scss/index.scss */
+#div-nav a
+{
+    color: #4382b0;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* line 44, ../scss/index.scss */
+#div-nav a:hover
+{
+    color: #ff8040;
+}
+
+/* line 51, ../scss/index.scss */
+.nav-selected
+{
+    font-weight: bold;
+}
+
+/* line 56, ../scss/index.scss */
+#div-details
+{
+    border: 1px solid #cccccc;
+    height: 100px;
+    background: #f1f2f2;
+    overflow-y: auto;
+    position: absolute;
+    right: 20px;
+    bottom: 45px;
+    left: 20px;
+}
+
+/* line 64, ../scss/index.scss */
+#div-details div.title
+{
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* line 70, ../scss/index.scss */
+#div-details div.tooltip
+{
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+/* line 75, ../scss/index.scss */
+#div-details table
+{
+    width: 100%;
+}
+
+.shortcut
+{
+    padding: 10px;
+    width: 50px;
+    position: fixed;
+    top: 110px;
+    left: 0;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #020202), color-stop(100%, #353535));
+    background: -webkit-linear-gradient(#020202, #353535);
+    background: -moz-linear-gradient(#020202, #353535);
+    background: -o-linear-gradient(#020202, #353535);
+    background: linear-gradient(#020202, #353535);
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.tipsy {
+    margin-left: 25px;
+}
+
+.divMenu {
+    width: 100%;
+    height: 30px;
+    /*background: transparent url("../img/bg_menu.png") repeat-x;*/
+    /*background: none repeat scroll 0 0 black;*/
+    position: absolute;
+
+}
+
+.configuration .k-textbox
+{
+    margin-top: -3px;
+}

@@ -1,0 +1,46 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<c:choose>
+    <c:when test="${empty fcDestino}">
+        <c:set var="dado" value="${fcOrigem}"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="dado" value="${fcDestino}"/>
+    </c:otherwise>
+</c:choose>
+
+<!-- mesmo valor definido no desktop -->
+<c:if test="${fieldHeight== null || empty fieldHeight}">
+    <c:set var="fieldHeight" value="90"/>
+</c:if>
+
+<%-- Alinhamento com o componente do delphi --%>
+<c:set var="fieldSize" value="${fieldSize - 7}"/>
+
+<c:choose>
+    <c:when test="${not empty campo.hint}">
+        <tag:hint id="${acao.id}" text="${campo.hint}">
+            <tag:label label="${campo.descricao}" cursorPointer="true" lineBreak="true" required="${campo.required}"/>
+        </tag:hint>
+    </c:when>
+    <c:otherwise>
+        <tag:label label="${campo.descricao}" lineBreak="true" required="${campo.required}"/>
+    </c:otherwise>
+</c:choose>
+<c:set var="fieldLength" value="${campo.fieldLength}"/>
+
+<!-- ATENÇÃO: não colocar espaço no dado, deixar ajustado -->
+<textarea id="${acao.id}"
+          name="${acao.id}"
+          obrigatorio="${campo.required}"
+        <c:if test="${not empty fieldLength}">
+            maxlength="${fieldLength}"
+        </c:if>
+          variavel="${campo.destino.id}"
+          class="obrigatorio lengthTextArea"
+          style="height: ${fieldHeight}px; width: ${fieldSize}px; resize: none;"
+          rows="8"
+          cols="40"
+        <c:if test="${campo.readonly}">
+            readonly="readonly"
+        </c:if>>${dado}</textarea>

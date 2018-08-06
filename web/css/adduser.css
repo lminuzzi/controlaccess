@@ -1,0 +1,44 @@
+/* line 9, ../scss/adduser.scss */
+#container-center {
+  height: 430px;
+  width: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -185px;
+  margin-left: -240px;
+  border: 1px solid #cccccc;
+  background: #c7daef url("../img/bg-login.png") repeat-x;
+}
+/* line 17, ../scss/adduser.scss */
+#container-center .title {
+  padding: 10px;
+}
+/* line 21, ../scss/adduser.scss */
+#container-center .title table {
+  padding: 20px;
+  font-size: 24px;
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 30, ../scss/adduser.scss */
+#container-center .body {
+  padding: 20px;
+}
+/* line 34, ../scss/adduser.scss */
+#container-center .body table {
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 20px;
+  width: 100%;
+}
+/* line 41, ../scss/adduser.scss */
+#container-center .body table a {
+  font-size: 11px;
+  text-decoration: underline;
+}
+
+/* line 50, ../scss/adduser.scss */
+.smaller {
+  font-size: 16px;
+}

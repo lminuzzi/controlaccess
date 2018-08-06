@@ -1,0 +1,133 @@
+@import "variables.scss";
+@import "mixins";
+@import "compass/css3";
+
+#container-top
+{
+  width         : 100%;
+  height        : $height-top;
+  background    : $color-01;
+  border-bottom : 1px solid $color-02;
+  color         : $color-04;
+
+  div
+  {
+    margin : 4px 20px 0 0;
+  }
+}
+
+#container-top, #container-title
+{
+  a
+  {
+    color           : $color-04;
+    text-decoration : none;
+    font-weight     : bold;
+
+    &:hover
+    {
+      color : $color-03;
+    }
+  }
+}
+
+#container-title
+{
+  width         : 100%;
+  height        : $height-title;
+  background    : transparent url('../img/bg_menu.png') repeat-x;
+  border-bottom : 1px solid $color-03;
+
+  div
+  {
+    padding : 5px 10px 5px 10px;
+  }
+}
+
+#search
+{
+  margin     : 13px 20px 0 0;
+  @include size(30px, 252px);
+  background : transparent url('../img/bg_search.png') no-repeat;
+
+  input
+  {
+    margin      : 0 0 0 40px;
+    background  : transparent;
+    border      : 0;
+    width       : 180px;
+    color       : $color-04;
+    font-weight : normal;
+    font-style  : italic;
+  }
+}
+
+#container-bottom
+{
+  @include size($height-bottom, 100%);
+  @include absolute(null, null, 0, null);
+  background : url("../img/bg-bottom.jpg") repeat-x;
+  border-top : 1px solid $color-03;
+  text-align : center;
+
+  a
+  {
+    color : $color-05;
+
+    &:hover
+    {
+      color : $color-03;
+    }
+  }
+
+  div
+  {
+    padding-top : 7px;
+    color       : $color-06;
+    font-size   : 10px;
+  }
+}
+
+.separator
+{
+  padding : 0 15px 0 15px;
+  color   : $color-04;
+}
+
+// Sobre escreve o style padrão do autocomplete
+.autocompleteSearch
+{
+  background : $color-15;
+  border     : 2px solid $color-05;
+
+  // categoria
+  .ui-autocomplete-category
+  {
+    color       : $color-18;
+    font-size   : 90%;
+  }
+
+  //opções
+  .ui-menu-item
+  {
+    a
+    {
+      color        : $color-03 !important;
+      padding-left : 5px;
+    }
+  }
+
+  //hover
+  .ui-state-focus
+  {
+    background  : $color-14;
+    border      : 1px solid $color-05;
+  }
+
+  .divisorCategory
+  {
+    border-top   : 1px solid $color-05;
+    margin-left  : 10px;
+    margin-right : 10px;
+  }
+}

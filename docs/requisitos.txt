@@ -1,0 +1,7 @@
+- Funcionalidade de Remoção da Instância:
+
+    -> Vai ter um outro botão chamado 'Cancelar e Remover' de cor vermelha à direita no form;
+    -> Esse botão vai REMOVER a instância;
+    -> A seguinte lógica deve ser usada para aparecer o botão:
+
+            IND_REMOVER da versao == 'S' || IND_REMOVER do elemento == 'S'

@@ -1,0 +1,62 @@
+@import "../variables";
+@import "../mixins";
+
+#container-content
+  {
+  @include absolute($top-header + $height-header, $width-grid + $padding-header + 5, $height-bottom + $padding-header, $left-header);
+}
+
+$border-fields : 1px solid $color-04;
+
+input, select, textarea {
+  border: $border-fields;
+}
+
+.div-radio, .anexo-listagem {
+  overflow: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  border: $border-fields;
+}
+
+input
+{
+  &[type=text].campo-obrigatorio, &[type=password].campo-obrigatorio
+  {
+    border : 2px solid $color-18;
+  }
+}
+
+.campo-obrigatorio
+{
+  border : 2px solid $color-18;
+}
+
+div.campo-obrigatorio
+{
+  border : 2px solid $color-18;
+}
+
+.truncate {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -moz-binding: url(ellipsis.xml#ellipsis);
+  overflow: hidden;
+}
+.div-step-buttons
+{
+  position : absolute;
+  padding  : 10px 5px 10px 5px;
+}
+
+#button-remove-processo
+{
+  background : $id-button-remove-processo-background;
+  color      : $id-button-remove-processo-color;
+  border     : 1px solid $id-button-remove-processo-boder;
+  opacity: 0.8;
+  &:hover
+  {
+    opacity: 1;
+  }
+}

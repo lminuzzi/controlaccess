@@ -1,0 +1,32 @@
+<div id="container-grid">
+    <table cellpadding="0" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th><fmt:message key="ultima.alteracoes.descricao"/></th>
+            <th><fmt:message key="ultima.alteracoes.etapa"/></th>
+            <th width=""><fmt:message key="ultima.alteracoes.alteracao"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="andamento" items="${ultimosAndamentos}">
+            <c:url var="url" value="/portal/processo/${andamento['ID_VERSAO']}">
+                <c:param name="versao" value="${andamento['ID_VERSAO']}"/>
+                <c:param name="instancia" value="${andamento['ID_INSTANCIA']}"/>
+                <c:param name="elemento" value="${andamento['ID_ELEMENTO']}"/>
+            </c:url>
+            <tr url="${url}">
+                <td style="max-width: 150px">
+                        <span title="${andamento['DESCRICAO_PROCESSO']}">${andamento['DESCRICAO_PROCESSO']}</span>
+                </td>
+                <td style="max-width: 110px">
+                        <span title="${andamento['ETAPA']}">${andamento['ETAPA']}</span>
+                </td>
+                <td style="max-width: 100px">
+                    <fmt:formatDate value="${andamento['DT_ALTERACAO']}" pattern="dd/MM/yyyy"/>
+                    <fmt:formatDate value="${andamento['HR_ALTERACAO']}" pattern="HH:mm"/>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>

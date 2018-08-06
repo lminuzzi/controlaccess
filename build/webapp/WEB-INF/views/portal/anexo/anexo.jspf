@@ -1,0 +1,160 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<c:url var="action" value="/iframe/portal/anexo.action">
+    <c:param name="acaoId" value="${acao.id}"/>
+</c:url>
+<c:set var="fieldLength" value="${campo.fieldLength}"/>
+<c:set var="obrigatorio" value="${campo.required}"/>
+<c:set var="dado" value="${fcDestino}"/>
+
+<c:set var="idInstancia" value="${processo['ID_INSTANCIA']}"/>
+
+<c:set var="anexos" value=""/>
+<c:set var="possuiAnexo" value="false"/>
+<c:if test="${not empty fcDestino}">
+    <c:set var="anexos" value="${customfn:split(fcDestino, '###')}"/>
+    <c:set var="possuiAnexo" value="true"/>
+</c:if>
+
+<table>
+    <tr>
+        <td style="width: ${fieldSize+7}px;">
+            <c:choose>
+                <c:when test="${not empty campo.hint}">
+                    <utils:hint id="${acao.id}" text="${campo.hint}">
+                        <utils:label label="${campo.descricao}" cursorPointer="true" lineBreak="true"
+                                     required="${campo.required}"/>
+                    </utils:hint>
+                </c:when>
+                <c:otherwise>
+                    <utils:label label="${campo.descricao}" lineBreak="true" required="${campo.required}"/>
+                </c:otherwise>
+            </c:choose>
+            <input type="hidden"
+                   id="anexo-send-single-${acao.id}"
+                   name="singleUniqueAnexo"/>
+            <input type="hidden"
+                   acaoid="${acao.id}"
+                   id="name-file-temp-${acao.id}"
+                   variavel="${campo.destino.id}"
+                   tipoDado="${campo.tipoDado.value}"
+                   obrigatorio="${obrigatorio}"
+                   instancia="${idInstancia}"
+                   isVetor="${campo.destino.vetor}"
+                   <c:if test="${possuiAnexo == true}">possuiAnexo="true"</c:if>
+                   <c:if test="${obrigatorio}">class="obrigatorio"</c:if>
+                   <c:if test="${campo.readonly}">readonly="true"</c:if>
+                   name="arrayOfFilesToSend"/>
+            <input name="instancia" type="hidden" value="${idInstancia}"/>
+            <div identificador="form-anexo-${acao.id}" style="display:none" action="${action}" enctype="multipart/form-data"
+                       target="iframe-${acao.id}"
+                       method="POST">
+                <div id="div-form-anexo-${acao.id}" style="position: absolute;z-index:-10;">
+                    <input type="file"
+                           id="anexo-campo-upload-${acao.id}"
+                           name="anexo"
+                           acaoId="${acao.id}"
+                           class="campo-anexo"/>
+                </div>
+            </div>
+            <!--O iframe é responsavel por receber o resultado do post do anexo-->
+            <div style="">
+                <iframe height="400" width="200" style="display: none" name="iframe-${acao.id}"></iframe>
+            </div>
+            <div name="table-anexo" idAcao="${acao.id}" instancia="${idInstancia}"
+                 variavel="${campo.destino.id}"
+                 style="height: ${fieldHeight}px;">
+                <c:set var="heightCampoUpload" value="24"/>
+                <c:set var="heightMensagem" value="15"/>
+                <c:set var="heightListaDownloads" value="${fieldHeight - (heightCampoUpload + heightMensagem)}"/>
+                <table cellpadding="0" cellspacing="0" style="width: ${fieldSize+7}px;">
+                    <c:choose>
+                        <c:when test="${!campo.readonly}">
+                            <tr>
+                                <td style="height: ${heightCampoUpload}px;" colspan="2">
+                                    <input type="text" notRead="true"
+                                           class="auxiliar-campo-anexo"
+                                           idInstanciaVar="${idInstVar}"
+                                           acaoId="${acao.id}"
+                                           readonly="true"
+                                           id="auxiliar-campo-anexo-${acao.id}"/>
+                                    <a class="auxiliar-campo-anexo pointer"
+                                       style="margin-left: 5px; text-decoration: underline;" acaoId="${acao.id}">
+                                        <fmt:message key="button.anexar"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:when>
+                    </c:choose>
+                    <tr id="anexo-mensagem-${acao.id}" style="display: none;">
+                        <td style="height: 15px; color: red;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="anexo-listagem" acaoId="${acao.id}"
+                                 variavel="${campo.destino.id}"
+                                 idInstanciaVar="${idInstVar}"
+                                 instancia="${idInstancia}"
+                                 style="height: ${fieldHeight-41}px;">
+
+
+                                <table style="width: 100%; right: 10px" id="anexos-linhas-arquivos-${acao.id}">
+
+                                    <c:if test="${not empty fcDestino}">
+                                        <c:forEach items="${anexos}" var="parteAnexo" varStatus="i" step="4">
+
+                                            <c:set var="posIntanciaVar" value="${i.index}"/>
+                                            <c:set var="posNomeFileInDB" value="${i.index+1}"/>
+                                            <c:set var="posExtFile" value="${i.index+2}"/>
+                                            <c:set var="posNomeFile" value="${i.index+3}"/>
+                                            <c:set var="nomeFile" value=""/>
+                                            <c:if test="${not empty posNomeFile && not empty posExtFile}">
+                                                <c:set var="nomeFile"
+                                                       value="${anexos[posNomeFile]}.${anexos[posExtFile]}"/>
+                                            </c:if>
+                                            <tr situacaoanexo="${anexoAntigo}"
+                                                namefileindisk="${anexos[posNomeFileInDB]}"
+                                                acaoid="${acao.id}"
+                                                idInstanciaVar="${anexos[posIntanciaVar]}">
+                                                <td>
+                                                    <div style="width: ${fieldSize-60}px;padding: 0; margin: 0;"
+                                                         class="truncate" title="${nomeFile}">
+                                                            ${nomeFile}
+                                                    </div>
+                                                </td>
+                                                <td style="width: 16px; text-align: center;">
+                                                    <c:url var="downloadFile"
+                                                           value="/ajax/processos/downloadanexo.action">
+                                                        <c:param name="idInstanciaVar"
+                                                                 value="${anexos[posIntanciaVar]}"/>
+                                                    </c:url>
+                                                    <a href="${downloadFile}"
+                                                       title="<fmt:message key="title.download.arquivo"/>"
+                                                       target="auxiliar-download-anexo">
+                                                        <img src="<c:url value="/img/download.png"/>"/>
+                                                    </a>
+                                                </td>
+                                                <c:choose>
+                                                    <c:when test="${!campo.readonly}">
+                                                        <td style="width: 16px; text-align: center;">
+                                                            <img class="anexo-remover-arquivo removerAnexo"
+                                                                 src="<c:url value="/img/removeFile.png"/>"
+                                                                 title="Remover Anexo" style="cursor:pointer">
+                                                        </td>
+                                                    </c:when>
+                                                </c:choose>
+                                            </tr>
+                                        </c:forEach>
+                                    </c:if>
+
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+

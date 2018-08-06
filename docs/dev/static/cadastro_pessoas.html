@@ -1,0 +1,274 @@
+<!DOCTYPE HTML PUBLIC
+        "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Controle de Acesso - Seja bem-vindo(a)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="../../../web/img/favicon.ico"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/jquery-ui-1.10.2.custom/css/ui-darkness/jquery-ui-1.10.3.custom.css"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/jquery.pnotify/jquery.pnotify.default.css"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/jquery.pnotify/use for pines style icons/jquery.pnotify.default.icons.css"/>
+    <link rel="stylesheet" href="../../../web/css/padrao.css"/>
+    <link rel="stylesheet" href="../../../web/css/template.css"/>
+    <link rel="stylesheet" href="../../../web/css/index.css"/>
+    <link rel="stylesheet" href="../../../web/css/menu.css"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/jquery.icheck/skins/square/square.css"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/kendoui.web.2013.2.716.open-source/styles/kendo.common.min.css"/>
+    <link rel="stylesheet" href="../../../web/js/plugins/kendoui.web.2013.2.716.open-source/styles/kendo.default.min.css"/>
+    <link rel="stylesheet" href="../../../web/css/cadastro_pessoas.css"/>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/jquery-ui-1.10.2.custom/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/jquery.pnotify/jquery.pnotify.min.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/portal/PortalJSController.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/kendoui.web.2013.2.716.open-source/js/kendo.web.min.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/jquery.icheck/jquery.icheck.min.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/plugins/jquery.masked/jquery.maskedinput.js"></script>
+    <script type="text/javascript"
+            src="../../../web/js/Utils.js"></script>
+    <!--<script type="text/javascript"
+            src="../../../web/js/Camera.js"></script>-->
+    <script type="text/javascript"
+            src="../../../web/js/portal/CadastroPessoas.js"></script>
+
+    <!-- TODO importando o js não está funcionando -->
+    <script type="text/javascript">
+        var video, canvas, context, localMediaStream;
+        //Tira foto.
+        function snapshot() {
+            if( localMediaStream ) {
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                document.querySelector('#img-photo').src = canvas.toDataURL('image/webp');
+                $( '#fotoInicial').hide();
+                $( '#fotoFinal').show();
+            }
+        }
+        //Fallback de erro a função getUserMedia.
+        function userMediaError() {
+        }
+        window.onload = function() {
+            if(!!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia)){
+                video = document.getElementById('video');
+                canvas = document.getElementById('canvas');
+                context = canvas.getContext('2d');
+            } else {
+                alert("Desculpa! Seu navegador não apresenta suporte.");
+            }
+        };
+        navigator.getMedia = ( navigator.getUserMedia ||
+                navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia ||
+                navigator.msGetUserMedia
+                );
+        navigator.getMedia({video: true}, function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+            localMediaStream = stream;
+        }, userMediaError());
+
+    </script>
+</head>
+<body>
+<div id="container-top">
+    <div class="right">
+        <div>
+            <table cellpadding="0" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td><a href="">Usuário Demonstração</a></td>
+                    <td class="separator">|</td>
+                    <td><a href="login.html">Sair</a></td>
+                    <td class="separator">|</td>
+                    <td><a href="">Ajuda</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="container-title">
+    <div id="search" class="right">
+        <form id="search_form" name="search_form" action="" method="GET">
+            <input type="text" id="q" name="q" value="">
+        </form>
+    </div>
+    <div class="left">
+        <a href="index.html">
+            <table cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <td><img src="../../../web/img/logo_asten.png" alt=""></td>
+                    <td style="padding-left: 10px;">
+                        <img src="../../../web/img/logo_controle_acessos.png" alt="">
+                        <br/>
+                        <span class="upper bold">
+                            <a href="">AVMB CONSULTORIA E ASSESSORIA EM INFORMÁTICA</a>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </a>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+<div class="divMenu">
+    <ul id="menu">
+        <li>
+            Cadastrar
+            <ul> <!-- moving the UL to the next line will cause an IE7 problem -->
+                <li><a href="cadastro_pessoas.html">Pessoas</a></li>
+                <li><a href="cadastro_locais.html">Locais</a></li>
+                <li><a href="cadastro_usuarios.html">Usuarios</a></li>
+            </ul>
+
+        </li>
+        <li>
+            Relatórios
+            <ul> <!-- moving the UL to the next line will cause an IE7 problem -->
+                <li><a href="visitas_local.html">Registro Por Local de Entrada</a></li>
+                <li><a href="visitas_tipo_pessoa.html">Registro Por Tipo de Pessoa</a></li>
+                <li><a href="visitas_horario.html">Registro Por Horário</a></li>
+                <li><a href="visitas_unidade_interna.html">Registro Por Unidade Interna</a></li>
+                <li><a href="pessoas_presentes.html">Pessoas Presentes</a></li>
+                <li><a href="agendamento_visitas.html">Agendamento de Visitas</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div id="div-nav">
+    Você está em: <a href="index.html">Início</a> » <span class="nav-selected">Cadastro de Pessoas</span>
+</div>
+<div id="container-header">
+    <div>
+        <h2>Cadastro de Pessoas</h2>
+    </div>
+</div>
+<div id="container-content">
+    <div>
+        <table cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    <div class="menu left item">
+                        <table class="tabForm">
+                            <tbody>
+                            <tr>
+                                <td><label for="tipo_pessoa">Tipo da Pessoa: </label></td>
+                                <td>
+                                    <select name="tipo_pessoa" id="tipo_pessoa">
+                                        <option value="civil" selected>Civil</option>
+                                        <option value="militar">Militar</option>
+                                    </select>
+                                </td>
+                                <td><label for="visitante">Visitante: </label></td>
+                                <td>
+                                    <div class="left"><input type="radio" name="visitante" id="visitante"></div>
+                                    <div class="left valCheck">Sim</div>
+                                    <div class="left"><input type="radio" name="visitante" checked="checked"></div>
+                                    <div class="left valCheck">Não</div>
+                                    <div class="clear"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="nome">Nome: </label></td>
+                                <td>
+                                    <input type="text" class="k-textbox" value="" id="nome" name="nome"/>
+                                </td>
+                                <td><label for="sobrenome">Sobrenome: </label></td>
+                                <td>
+                                    <input type="text" class="k-textbox" value="" id="sobrenome" name="sobrenome"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="rg">RG: </label></td>
+                                <td>
+                                    <input type="text" class="k-textbox mask-rg" value="" id="rg" name="rg"/>
+                                </td>
+                                <td><label for="cpf">Cpf: </label></td>
+                                <td>
+                                    <input type="text" class="k-textbox mask-cpf" value="" id="cpf" name="cpf"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="dtNascimento">Data de Nascimento: </label></td>
+                                <td>
+                                    <input type="text" value="" id="dtNascimento" name="dtNascimento"/>
+                                </td>
+                                <td><label for="sexo">Sexo: </label></td>
+                                <td>
+                                    <div class="left"><input type="radio" name="sexo" id="sexo" checked="checked"></div>
+                                    <div class="left valCheck">Masculino</div>
+                                    <div class="left"><input type="radio" name="sexo"></div>
+                                    <div class="left valCheck">Feminino</div>
+                                    <div class="clear"></div>
+                                </td>
+                            </tr>
+                            <tr class="tipoMilitarSelecionado">
+                                <td class="tipoMilitar" colspan="4">Informações Militares</td>
+                            </tr>
+                            <tr class="tipoMilitarSelecionado">
+                                <td><label for="nomeGuerra">Nome de Guerra: </label></td>
+                                <td>
+                                    <input type="text" class="k-textbox" value="" id="nomeGuerra" name="nomeGuerra"/>
+                                </td>
+                                <td><label for="patente">Patente: </label></td>
+                                <td>
+                                    <select name="patente" id="patente">
+                                        <option value="soldado" selected>Soldado</option>
+                                        <option value="cabo">Cabo</option>
+                                        <option value="sargento">Sargento</option>
+                                        <option value="tenente">Tenente</option>
+                                        <option value="major">Major</option>
+                                        <option value="capitao">Capitão</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="identificacao">
+                                <td><label for="numIdentificacao">Identificação: </label></td>
+                                <td colspan="3" id="numIdentificacao"></td>
+                            </tr>
+                            <tr id="veiculo">
+                                <td><label for="numPlaca">N&uacute;mero da Placa: </label></td>
+                                <td colspan="3" id="numPlaca"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="left" id="fotoInicial">
+                        <div><video autoplay id='video' width='400' height='300'></video></div>
+                        <div><input type='button' class="k-button" value='Tirar foto' id='takephoto' onClick="snapshot();" /></div>
+                    </div>
+                    <div class="left" style="display: none;" id="fotoFinal">
+                        <div><img src="" id='img-photo' width='400px;' height='300px;'></div>
+                        <div><canvas style='display:none;' id='canvas' width='400' height='300'></canvas></div>
+                    </div>
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td><button class="k-button" id="salvar">Salvar</button></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="window">
+        <div style="text-align: center;">
+            <p>teste</p>
+        </div>
+    </div>
+</div>
+<div id="container-bottom">
+    <div>
+        Copyright © 2013 <a href="http://www.avmb.com.br" target="_blank">AVMB Consultoria e Assessoria</a>. Todos os
+        direitos reservados.
+    </div>
+</div>
+</body>
+</html>

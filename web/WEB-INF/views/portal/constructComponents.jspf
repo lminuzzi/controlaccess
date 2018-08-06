@@ -1,0 +1,66 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<c:if test="${not empty acoesViewComponents}">
+    <c:forEach var="acaoView" items="${acoesViewComponents}">
+        <c:set var="component" value="${acaoView.acao.component}"/>
+        <c:set var="campo" value="${acaoView.acao.campo}"/>
+        <c:set var="acao" value="${acaoView.acao}"/>
+
+        <%-- posição do campo --%>
+        <c:choose>
+            <c:when test="${component.position!=null && not empty component.position}">
+                <c:set var="positionTop" value="${component.position.top}"/>
+                <c:set var="positionLeft" value="${component.position.left}"/>
+            </c:when>
+            <c:otherwise>
+                <c:set var="positionTop" value="0"/>
+                <c:set var="positionLeft" value="0"/>
+            </c:otherwise>
+        </c:choose>
+        <%-- tamanho do campo: é usado no largura do componente, tem o decréscimo pq a largura que vem
+   do banco e do painel --%>
+        <c:set var="fieldSize" value="${component.size}"/>
+        <c:choose>
+            <c:when test="${fieldSize==null || empty fieldSize}">
+                <c:set var="fieldSize" value="185"/>
+            </c:when>
+            <c:otherwise>
+                <c:set var="fieldSize" value="${fieldSize-15}"/>
+            </c:otherwise>
+        </c:choose>
+        <%-- tamanho da altura --%>
+        <c:set var="fieldHeight" value="${component.height}"/>
+        <%-- pega a altura do componente para calcular onde colocar os botões --%>
+        <c:choose>
+            <c:when test="${fieldHeight!= null && not empty fieldHeight}">
+                <c:set var="campoFieldHeight" value="${fieldHeight}"/>
+            </c:when>
+            <c:otherwise>
+                <c:set var="campoFieldHeight" value="30"/>
+            </c:otherwise>
+        </c:choose>
+        <%-- aqui diminuimos pois a altura é do painel --%>
+        <c:if test="${fieldHeight!= null && not empty fieldHeight}">
+            <c:set var="fieldHeight" value="${fieldHeight-25}"/>
+        </c:if>
+
+        <c:set var="sum" value="${positionTop+campoFieldHeight}"/>
+        <c:if test="${sum>largerTop}">
+            <c:set var="largerTop" value="${sum}"/>
+        </c:if>
+
+        <div style="position: absolute;
+                top: ${positionTop}px;
+                left: ${positionLeft}px;
+                width: ${component.size}px">
+            <c:choose>
+                <c:when test="${campo.tipoCampo.item == grid}">
+                    <%@include file="grid.jspf" %>
+                </c:when>
+                <c:when test="${campo.tipoCampo.item == edit}">
+                    <%@include file="edit.jspf" %>
+                </c:when>
+            </c:choose>
+        </div>
+    </c:forEach>
+</c:if>

@@ -1,0 +1,61 @@
+@import "variables";
+@import "mixins";
+
+.menu
+  {
+  div.item
+    {
+    $tamanho-padrao-img : 24px;
+    $largura-item-menu : 140px;
+    $altura-item-menu : 140px;
+    overflow-y : hidden;
+
+    float      : left;
+    @include size($altura-item-menu, $largura-item-menu);
+    text-align : center;
+    @include padding(0, 0, 25px, 0);
+    color      : $default-color;
+
+    div.content
+      {
+      > img
+        {
+        text-align : center;
+        opacity    : .8;
+      }
+
+      &:hover
+        {
+        > img
+          {
+          font-weight : bold;
+          opacity     : 1;
+        }
+      }
+    }
+
+    div.info
+      {
+      height : $tamanho-padrao-img;
+      weigth : $tamanho-padrao-img;
+      cursor : pointer;
+      > img
+        {
+        opacity : .5;
+      }
+
+      &:hover
+        {
+        > img
+          {
+          opacity : 1;
+        }
+      }
+    }
+  }
+
+  div
+    {
+    text-align : center;
+  }
+}

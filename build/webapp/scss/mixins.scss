@@ -1,0 +1,63 @@
+@mixin absolute($top, $right, $bottom, $left) {
+  position : absolute;
+  @include position($top, $right, $bottom, $left);
+}
+
+@mixin fixed($top, $right, $bottom, $left) {
+  position : fixed;
+  @include position($top, $right, $bottom, $left);
+}
+
+@mixin position($top, $right, $bottom, $left) {
+  @if $top != null {
+    top : $top;
+  }
+  @if $right != null {
+    right : $right;
+  }
+  @if $bottom != null {
+    bottom : $bottom;
+  }
+  @if $left != null {
+    left : $left;
+  }
+}
+
+@mixin padding($top, $right, $bottom, $left) {
+  @if $top != null {
+    padding-top : $top;
+  }
+  @if $right != null {
+    padding-right : $right;
+  }
+  @if $bottom != null {
+    padding-bottom : $bottom;
+  }
+  @if $left != null {
+    padding-left : $left;
+  }
+}
+
+@mixin margin($top, $right, $bottom, $left) {
+  @if $top != null {
+    margin-top : $top;
+  }
+  @if $right != null {
+    margin-right : $right;
+  }
+  @if $bottom != null {
+    margin-bottom : $bottom;
+  }
+  @if $left != null {
+    margin-left : $left;
+  }
+}
+
+@mixin size($height, $width) {
+  @if $height != null {
+    height : $height;
+  }
+  @if $width != null {
+    width : $width;
+  }
+}

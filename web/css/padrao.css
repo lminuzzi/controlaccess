@@ -1,0 +1,262 @@
+/* line 15, ../scss/padrao.scss */
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* line 19, ../scss/padrao.scss */
+body {
+  padding: 0;
+  margin: 0;
+  background: #e8e8e8;
+  color: #666666;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+/* line 28, ../scss/padrao.scss */
+.upper {
+  text-transform: uppercase;
+}
+
+/* line 32, ../scss/padrao.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 36, ../scss/padrao.scss */
+.right {
+  float: right;
+}
+
+/* line 40, ../scss/padrao.scss */
+.left {
+  float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.hide {
+    display: none;
+}
+
+/* line 44, ../scss/padrao.scss */
+.shadow {
+  -webkit-box-shadow: #666666 3px 3px 4px;
+  -moz-box-shadow: #666666 3px 3px 4px;
+  box-shadow: #666666 3px 3px 4px;
+}
+
+/* line 48, ../scss/padrao.scss */
+.pointer {
+  cursor: pointer;
+}
+
+/* line 52, ../scss/padrao.scss */
+.hide {
+  display: none;
+}
+
+/* line 56, ../scss/padrao.scss */
+.corner {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 60, ../scss/padrao.scss */
+a {
+  color: #4382b0;
+}
+/* line 63, ../scss/padrao.scss */
+a:hover {
+  color: #ff8040;
+}
+
+/* line 69, ../scss/padrao.scss */
+.ui-widget {
+  font-size: 95%;
+}
+
+/* line 73, ../scss/padrao.scss */
+.hide {
+  display: none;
+}
+
+/* line 77, ../scss/padrao.scss */
+.lower {
+  text-transform: lowercase;
+}
+
+/* line 81, ../scss/padrao.scss */
+.label {
+  font-weight: bold;
+}
+
+/* line 85, ../scss/padrao.scss */
+.required {
+  color: red;
+  font-weight: bold;
+}
+
+/* line 90, ../scss/padrao.scss */
+div.grid {
+  color: black;
+  border: 1px solid #cccccc;
+  position: relative;
+}
+/* line 101, ../scss/padrao.scss */
+div.grid table thead {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #666666), color-stop(100%, #0b0b0b));
+  background: -webkit-linear-gradient(#666666, #0b0b0b);
+  background: -moz-linear-gradient(#666666, #0b0b0b);
+  background: -o-linear-gradient(#666666, #0b0b0b);
+  background: linear-gradient(#666666, #0b0b0b);
+}
+/* line 103, ../scss/padrao.scss */
+div.grid table thead span {
+  color: #222222;
+}
+/* line 107, ../scss/padrao.scss */
+div.grid table thead tr th {
+  height: 20px;
+  border-right: 1px solid #cccccc;
+  padding: 5px;
+  color: white;
+}
+/* line 112, ../scss/padrao.scss */
+div.grid table thead tr th:last-child {
+  border-right: none;
+}
+/* line 115, ../scss/padrao.scss */
+div.grid table thead tr th.boxOrRadio {
+  width: 30px;
+}
+/* line 122, ../scss/padrao.scss */
+div.grid table tbody tr {
+  background: white;
+}
+/* line 124, ../scss/padrao.scss */
+div.grid table tbody tr.zebra {
+  background: white;
+}
+/* line 128, ../scss/padrao.scss */
+div.grid table tbody tr:last-child > th {
+  border-bottom: none;
+}
+/* line 132, ../scss/padrao.scss */
+div.grid table tbody tr td {
+  padding: 5px;
+  border-top: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+}
+/* line 136, ../scss/padrao.scss */
+div.grid table tbody tr td:last-child {
+  border-right: none;
+}
+/* line 139, ../scss/padrao.scss */
+div.grid table tbody tr td.boxOrRadio {
+  text-align: center;
+}
+/* line 144, ../scss/padrao.scss */
+div.grid table tbody tr:first-child > td {
+  border-top: none;
+}
+/* line 148, ../scss/padrao.scss */
+div.grid table tbody tr.linhaSelecionada {
+  background: #f0f0f0;
+}
+/* line 155, ../scss/padrao.scss */
+div.grid div.header {
+  display: block;
+}
+/* line 158, ../scss/padrao.scss */
+div.grid div.content {
+  border-top: 1px solid #cccccc;
+  position: absolute;
+  overflow-y: auto;
+  bottom: 0px;
+  top: 30px;
+}
+/* line 166, ../scss/padrao.scss */
+div.grid .div-checkbox {
+  margin-left: 8px;
+}
+/* line 172, ../scss/padrao.scss */
+div.grid[readonly] table thead {
+  opacity: .6;
+}
+
+/* line 179, ../scss/padrao.scss */
+div[readonly] {
+  color: #666666;
+  background-color: #f0f0f0;
+  border: 1px solid #cccccc;
+}
+
+/* line 183, ../scss/padrao.scss */
+input {
+  color: black;
+}
+
+/* line 187, ../scss/padrao.scss */
+textarea {
+  color: black;
+}
+/* line 189, ../scss/padrao.scss */
+textarea[readonly] {
+  color: #666666;
+  background-color: #f0f0f0;
+  border: 1px solid #cccccc;
+}
+
+/* line 194, ../scss/padrao.scss */
+select {
+  color: black;
+}
+/* line 196, ../scss/padrao.scss */
+select[readonly] {
+  color: #666666;
+  background-color: #f0f0f0;
+  border: 1px solid #cccccc;
+}
+
+/* line 202, ../scss/padrao.scss */
+.carregando {
+  display: none;
+  position: fixed;
+  left: 50%;
+  margin-left: -75px;
+  top: 0;
+  padding: 5px 10px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: #121212 3px 3px 4px;
+  -moz-box-shadow: #121212 3px 3px 4px;
+  box-shadow: #121212 3px 3px 4px;
+  background-color: #f6e7a2;
+  color: black;
+}
+
+/*autocomplete*/
+.ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
+*/
+* html .ui-autocomplete {
+    height: 100px;
+}
+

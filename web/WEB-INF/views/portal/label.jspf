@@ -1,0 +1,22 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<c:choose>
+    <c:when test="${not empty fcOrigem}">
+        <c:set var="toLabel" value="${fcOrigem}"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="toLabel" value="${campo.descricao}"/>
+    </c:otherwise>
+</c:choose>
+
+<c:choose>
+    <c:when test="${not empty campo.hint}">
+        <tag:hint id="${acao.id}" text="${campo.hint}">
+            <tag:label label="${toLabel}" required="${campo.required}" cursorPointer="true"/>
+        </tag:hint>
+    </c:when>
+    <c:otherwise>
+        <tag:label label="${toLabel}" required="${campo.required}"/>
+    </c:otherwise>
+</c:choose>
+

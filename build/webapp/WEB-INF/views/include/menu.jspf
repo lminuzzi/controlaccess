@@ -1,0 +1,51 @@
+<%@ include file="heads.jspf" %>
+
+<div style="overflow-y : auto;">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <div class="menu">
+                    <c:forEach items="${menus}" var="menu" varStatus="i">
+
+                        <c:set var="id" value="${menu['ID_MENU']}"/>
+                        <c:set var="tipo" value="${menu['TIPO_MENU']}"/>
+                        <c:set var="versao" value="${menu['ID_VERSAO']}"/>
+                        <c:set var="title" value="${menu['TITLE']}"/>
+                        <c:set var="tooltip" value="${menu['TOOLTIP']}"/>
+
+                        <c:set var="url">
+                            <c:choose>
+                                <c:when test="${tipo == 'M'}">
+                                    <c:url value="/index/${id}"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:url value="/portal/processo/${versao}"/>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:set>
+
+
+                        <div class="item">
+                            <div>
+                                <div class="info">
+                                    <img src="<c:url value="/img/help.png"/>" class="details hide"/>
+                                </div>
+                            </div>
+                            <div class="content bold pointer" url="${url}">
+                                <img src="<c:url value="/menuimg/${id}"/>" alt=""/>
+
+                                <div>${title}</div>
+                                <span class="hide">${tooltip}</span>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+                <div style="clear:both;"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+

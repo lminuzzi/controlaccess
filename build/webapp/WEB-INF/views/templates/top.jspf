@@ -1,0 +1,105 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<%@ page import="br.com.avmb.bpmn.utils.ContextUtils" %>
+<% pageContext.setAttribute( "attrName", ParInstituicaoInterceptor.ATTRIBUTE_NAME ); %>
+<c:set var="instituicao" value="${requestScope[attrName]}"/>
+
+<%@ page import="br.com.avmb.bpmn.web.interceptor.ParInstituicaoInterceptor" %>
+<% pageContext.setAttribute( "attrName", ContextUtils.ATTRIBUTE_NAME ); %>
+<c:set var="usuario" value="${sessionScope[attrName]}"/>
+
+<c:set var="isLoginPage" value="${fn:contains(pageContext.request.requestURI, '/login')}"/>
+<c:set var="isCadastroUsuario" value="${fn:contains(pageContext.request.requestURI, '/adduser')}"/>
+<c:set var="isEsqueciSenha" value="${fn:contains(pageContext.request.requestURI, '/esquecisenha')}"/>
+
+<div id="container-top">
+
+    <div class="right">
+
+        <div>
+            <table cellpadding="0" cellspacing="0">
+                <tbody>
+                <tr>
+                    <c:choose>
+                        <c:when test="${not empty usuario}">
+                            <td><span class="bold">${usuario.nome}</span></td>
+                            <td class="separator">|</td>
+                            <td>
+                                <a href="<c:url value="/logout"/>">
+                                    <fmt:message key="link.logout"/>
+                                </a>
+                            </td>
+                            <td class="separator">|</td>
+                        </c:when>
+                        <c:when test="${isLoginPage || isCadastroUsuario || isEsqueciSenha}">
+                            <td>
+                                <a href="<c:url value="/"/>">
+                                    <fmt:message key="link.inicio"/>
+                                </a>
+                            </td>
+                            <td class="separator">|</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>
+                                <a href="<c:url value="/login"/>">
+                                    <fmt:message key="link.login"/>
+                                </a>
+                            </td>
+                            <td class="separator">|</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <td>
+                        <a href="<c:url value="/help"/>">
+                            <fmt:message key="link.help"/>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="container-title">
+
+    <c:if test="${not isLoginPage && not isCadastroUsuario}">
+        <!-- TODO: talvez um autocomplete -->
+        <div id="search" class="right">
+            <input type="text" id="q" name="q" value="Acesso Rápido"
+                   urlsearch="<c:url value="/ajax/serach/autocomplete.action" />"
+                   urlredirect="<c:url value="/portal/processo/"/>"
+                   versao="">
+        </div>
+    </c:if>
+
+    <div class="left">
+        <table cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+                <td><img src="<c:url value="/img/logo_asten.png"/>" alt=""></td>
+                <td style="padding-left: 10px;">
+                    <img src="<c:url value="/img/logo_nfse.png"/>" alt="">
+                    <br/>
+
+                    <span class="upper bold">
+
+                    <c:set var="site" value="${instituicao.site}"/>
+
+                    <c:choose>
+                        <c:when test="${not empty site}">
+                            <tag:linkext url="${site}">${instituicao.nome}</tag:linkext>
+                        </c:when>
+                        <c:otherwise>${instituicao.nome}</c:otherwise>
+                    </c:choose>
+
+                    </span>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

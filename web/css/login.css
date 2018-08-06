@@ -1,0 +1,62 @@
+/* line 9, ../scss/login.scss */
+#container-center {
+  height: 370px;
+  width: 480px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -155px;
+  margin-left: -240px;
+  border: 1px solid #cccccc;
+  background: #c7daef url("../img/bg-login.png") repeat-x;
+}
+/* line 17, ../scss/login.scss */
+#container-center .title {
+  padding: 10px;
+}
+/* line 21, ../scss/login.scss */
+#container-center .title table {
+  padding: 20px;
+  font-size: 24px;
+  width: 100%;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 30, ../scss/login.scss */
+#container-center .body {
+    padding: 40px 20px 20px 20px;
+}
+/* line 34, ../scss/login.scss */
+#container-center .body table.cadastro {
+  width: auto;
+  padding-top: 10px;
+  cursor: pointer;
+}
+/* line 40, ../scss/login.scss */
+#container-center .body table.cadastro img {
+  opacity: .8;
+}
+/* line 48, ../scss/login.scss */
+#container-center .body table.cadastro:hover img {
+  opacity: 1;
+}
+/* line 53, ../scss/login.scss */
+#container-center .body table.cadastro:hover a {
+  color: #ff8040;
+}
+/* line 60, ../scss/login.scss */
+#container-center .body table {
+  font-size: 12px;
+  font-weight: bold;
+  padding-left: 20px;
+  width: 100%;
+}
+/* line 67, ../scss/login.scss */
+#container-center .body table a {
+  font-size: 11px;
+  text-decoration: underline;
+}
+
+/* line 76, ../scss/login.scss */
+.smaller {
+  font-size: 16px;
+}

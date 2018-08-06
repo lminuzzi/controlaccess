@@ -1,0 +1,156 @@
+/* line 6, ../../scss/portal/portal.scss */
+.shortcut {
+  padding: 10px;
+  width: 50px;
+  position: fixed;
+  top: 110px;
+  left: 0;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #020202), color-stop(100%, #353535));
+  background: -webkit-linear-gradient(#020202, #353535);
+  background: -moz-linear-gradient(#020202, #353535);
+  background: -o-linear-gradient(#020202, #353535);
+  background: linear-gradient(#020202, #353535);
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* line 15, ../../scss/portal/portal.scss */
+.tipsy {
+  margin-left: 25px;
+}
+
+/* line 20, ../../scss/portal/portal.scss */
+#container-header {
+  height: 33px;
+  border: 1px solid #cccccc;
+  background: #f1f2f2;
+  position: absolute;
+  top: 110px;
+  right: 425px;
+  left: 90px;
+}
+/* line 27, ../../scss/portal/portal.scss */
+#container-header div {
+  padding: 5px 8px 5px 8px;
+}
+/* line 32, ../../scss/portal/portal.scss */
+#container-header h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 4px;
+  display: block;
+}
+
+/* line 41, ../../scss/portal/portal.scss */
+#container-grid {
+  width: 400px;
+  border: 3px solid #cccccc;
+  color: #999999;
+  position: absolute;
+  top: 110px;
+  right: 20px;
+  bottom: 45px;
+  overflow: auto;
+  background: black url("../../img/bg_andamento.png") repeat-x;
+}
+/* line 55, ../../scss/portal/portal.scss */
+#container-grid tr th:hover {
+  cursor: default;
+}
+/* line 64, ../../scss/portal/portal.scss */
+#container-grid tbody tr:hover {
+  background-color: #232323;
+  cursor: pointer;
+}
+/* line 71, ../../scss/portal/portal.scss */
+#container-grid th {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 7px;
+  border-bottom: 1px solid #666666;
+  color: white;
+}
+/* line 81, ../../scss/portal/portal.scss */
+#container-grid td {
+  font-weight: bold;
+  padding: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-bottom: 1px solid #666666;
+}
+
+/* line 91, ../../scss/portal/portal.scss */
+#container-content {
+  background: white;
+  border: 1px solid #cccccc;
+  overflow-y: auto;
+  position: absolute;
+  top: 143px;
+  right: 425px;
+  bottom: 145px;
+  left: 90px;
+}
+
+/* line 99, ../../scss/portal/portal.scss */
+#div-nav {
+  padding: 10px;
+}
+/* line 103, ../../scss/portal/portal.scss */
+#div-nav a {
+  color: #4382b0;
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* line 109, ../../scss/portal/portal.scss */
+#div-nav a:hover {
+  color: #ff8040;
+}
+
+/* line 116, ../../scss/portal/portal.scss */
+.nav-selected {
+  font-weight: bold;
+}
+
+/* line 121, ../../scss/portal/portal.scss */
+#div-details {
+  border: 1px solid #cccccc;
+  height: 100px;
+  background: #f1f2f2;
+  overflow-y: auto;
+  position: absolute;
+  right: 425px;
+  bottom: 45px;
+  left: 90px;
+}
+/* line 129, ../../scss/portal/portal.scss */
+#div-details div.title {
+  padding: 10px;
+  font-weight: bold;
+}
+/* line 135, ../../scss/portal/portal.scss */
+#div-details div.tooltip {
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+/* line 140, ../../scss/portal/portal.scss */
+#div-details table {
+  width: 100%;
+}
+
+/* line 146, ../../scss/portal/portal.scss */
+#div-show-hide {
+  float: right;
+  cursor: pointer;
+  opacity: .7;
+  padding: 5px;
+}
+/* line 153, ../../scss/portal/portal.scss */
+#div-show-hide:hover {
+  opacity: 1;
+}

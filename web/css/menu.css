@@ -1,0 +1,51 @@
+/* line 7, ../scss/menu.scss */
+.menu div.item
+{
+    overflow-y: hidden;
+    float: left;
+    height: 340px;
+    width: 500px;
+    text-align: left;
+    margin: 25px;
+    color: #666666;
+}
+
+/* line 22, ../scss/menu.scss */
+.menu div.item div.content > img
+{
+    text-align: center;
+    opacity: .8;
+}
+
+/* line 30, ../scss/menu.scss */
+.menu div.item div.content:hover > img
+{
+    font-weight: bold;
+    opacity: 1;
+}
+
+/* line 38, ../scss/menu.scss */
+.menu div.item div.info
+{
+    height: 24px;
+    weigth: 24px;
+    cursor: pointer;
+}
+
+/* line 43, ../scss/menu.scss */
+.menu div.item div.info > img
+{
+    opacity: .5;
+}
+
+/* line 50, ../scss/menu.scss */
+.menu div.item div.info:hover > img
+{
+    opacity: 1;
+}
+
+/* line 58, ../scss/menu.scss */
+.menu div
+{
+    text-align: center;
+}

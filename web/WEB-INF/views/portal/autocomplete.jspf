@@ -1,0 +1,38 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<c:set var="fieldLength" value="${campo.fieldLength}"/>
+<c:set var="obrigatorio" value="${campo.required}"/>
+
+<c:choose>
+    <c:when test="${not empty campo.hint}">
+        <tag:hint id="${acao.id}" text="${campo.hint}">
+            <tag:label label="${campo.descricao}" cursorPointer="true" lineBreak="true" required="${campo.required}"/>
+        </tag:hint>
+    </c:when>
+    <c:otherwise>
+        <tag:label label="${campo.descricao}" lineBreak="true" required="${campo.required}"/>
+    </c:otherwise>
+</c:choose>
+
+<%-- Alinhamento com o componente do delphi --%>
+<c:set var="fieldSize" value="${fieldSize - 23}"/>
+
+<c:set value="${campo.autoComplete}" var="bpmnAutoComplete"/>
+
+<input id="autocompleteHidden${acao.id}" value="${bpmnAutoComplete.valueRetorno}" type="hidden"/>
+<input id="autocompleteHiddenId${acao.id}" value="${bpmnAutoComplete.valuePk}" type="hidden"/>
+
+<div style="white-space: nowrap;" class="ui-widget">
+    <input id="autoComplete${acao.id}"
+           acao="${acao.id}"
+           type="text"
+           value="${bpmnAutoComplete.valuePesquisa}"
+           tipo="${autoComplete}"
+           variavel="${campo.destino.id}"
+           class="obrigatorio autocomplete"
+           style="width: ${fieldSize}px; padding-right: 20px;"
+           obrigatorio="${obrigatorio}"
+            <c:if test="${campo.readonly}">
+                readonly="readonly"
+            </c:if>/>
+</div>

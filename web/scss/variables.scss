@@ -1,0 +1,52 @@
+$default-font : Arial, Helvetica, sans-serif;
+$default-font-size : 12px;
+$default-color : #666666;
+
+$bg-body : #E8E8E8;
+
+$height-top : 30px;
+$height-title : 60px;
+$height-bottom : 25px;
+$height-header : 33px;
+
+$padding-header : 20px;
+
+$width-shortcut : 50px;
+$width-grid : 400px;
+
+$top-header : $height-top + $height-title + 20px;
+$left-header : $width-shortcut + 40px;
+
+$height-details : 100px;
+
+$color-01 : #000000;
+$color-02 : #444444;
+$color-03 : #FFFFFF;
+$color-04 : #999999;
+$color-05 : #AAAAAA;
+$color-06 : #777777;
+$color-07 : #020202;
+$color-08 : #353535;
+$color-09 : #CCCCCC;
+$color-10 : #F1F2F2;
+$color-11 : #4382B0;
+$color-12 : #FF8040;
+$color-13 : #B4CEE9;
+$color-14 : #666666;
+$color-15 : #0B0B0B;
+$color-16 : #232323;
+$color-17 : #C7DAEF;
+$color-18 : #F6640A;
+$color-19 : #F0F0F0;
+$color-20 : #F6E7A2;
+$color-21 : #121212;
+$color-23 : #222222;
+$color-24 : #E57D82;
+$color-25 : #E52F2D;
+$color-26 : #7F0800;
+
+//========================== BOTÕES ===================================
+$id-button-remove-processo-background : $color-24;
+$id-button-remove-processo-boder : $color-25;
+$id-button-remove-processo-color : $color-26;
+

@@ -1,0 +1,35 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<div id="div-nav">
+
+    Você está em:
+
+    <c:choose>
+        <c:when test="${empty navegacao}"><span class="bold">início</span></c:when>
+        <c:otherwise>
+
+            <a href="<c:url value="/index"/>">início</a>
+
+            <c:forEach items="${navegacao}" var="item" varStatus="i">
+
+                »
+
+                <c:set var="title" value="${item['TITLE']}"/>
+                <c:set var="id" value="${item['ID_MENU']}"/>
+
+                <c:choose>
+                    <c:when test="${i.last}">
+                        <span class="nav-selected lower">${title}</span>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="<c:url value="/index/${id}"/>" class="lower">${title}</a>
+                    </c:otherwise>
+                </c:choose>
+
+            </c:forEach>
+
+        </c:otherwise>
+    </c:choose>
+
+</div>
+

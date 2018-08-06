@@ -1,0 +1,162 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<c:set var="key" value="${campo.key}"/>
+<c:set var="columns" value="${campo.variaveis}"/>
+<c:set var="qtdColunas" value="${fn:length(columns)}"/>
+<c:set var="target" value="${campo.destino}"/>
+
+<c:set var="primeiraColuna" value=""/>
+<div idAcao="${acao.id}"
+     obrigatorio="${component.required}"
+     type="${component.type.value}"
+     class="grid"
+     style="height: ${component.height}px;
+             width: ${component.size}px;"
+     variavel="${target.id}"
+     tipoDado="${campo.tipoDado.value}"
+     <c:if test="${component.readonly}">readonly="${component.readonly}"</c:if>>
+
+    <div class="header">
+        <table cellpadding="0" cellspacing="0" width="100%">
+            <thead>
+            <c:if test="${component.type.value == gridTypeCheckbox || component.type.value == gridTypeRadio}">
+                <th style="width:${component.key.width-10}px; min-width:${component.key.width-10}px; max-width:${component.key.width-10}px"></th>
+            </c:if>
+            <c:set var="isVazio" value="true"/>
+            <c:forEach var="columnValue" items="${columns}" varStatus="i">
+                <c:if test="${i.index == 0}">
+                    <c:set var="primeiraColuna" value="${columnValue}"/>
+                </c:if>
+
+                <c:if test="${not empty columnValue.instanciasVariavel[0].fatorChar}">
+                    <c:set var="isVazio" value="falses"/>
+                </c:if>
+
+                <%--É preciso remover 10px de cada coluna pois possui padding:5px--%>
+                <th class="colunaInfo"
+                    <c:if test="${i.index != qtdColunas-1}">style="width:${component.columns[columnValue.nome].width-10}px"</c:if>>
+                        ${columnValue.descricao}
+                </th>
+            </c:forEach>
+            </thead>
+        </table>
+    </div>
+    <div class="content" style="width: ${component.size}px">
+        <table cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+            <c:choose>
+                <c:when test="${not empty primeiraColuna.instanciasVariavel && !isVazio}">
+                    <c:set var="totalRegistros" value="${fn:length(primeiraColuna.instanciasVariavel)}"/>
+                    <c:forEach var="pColuna" items="${primeiraColuna.instanciasVariavel}" varStatus="i">
+                        <tr <c:if test="${i.index % 2 == 1}">class="zebra"</c:if>>
+                            <c:choose>
+                                <c:when test="${component.type.value == gridTypeCheckbox}">
+                                    <c:set var="widthCol" value="${component.key.width-10}px"/>
+                                    <c:set var="checarItem" value="false"/>
+                                    <c:forEach var="itemSelecionado" items="${target.instanciasVariavel}">
+                                        <c:if test="${itemSelecionado.fatorChar == key.instanciasVariavel[i.index].fatorChar}">
+                                            <c:set var="checarItem" value="true"/>
+                                        </c:if>
+                                    </c:forEach>
+                                    <td class="boxOrRadio"
+                                        style="width:${widthCol}; max-width:${widthCol}; min-width:${widthCol}">
+                                        <div input="checkbox"
+                                             <c:if test="${component.readonly}">disabled="true"</c:if>
+                                             <c:if test="${checarItem == 'true'}">checked="true"</c:if>
+                                             class="div-checkbox <c:if test="${checarItem}">div-checked</c:if>"
+                                             value="${fn:trim(key.instanciasVariavel[i.index].fatorChar)}"></div>
+                                    </td>
+                                </c:when>
+                                <c:when test="${component.type.value == gridTypeRadio}">
+                                    <c:set var="checarItem" value="false"/>
+                                    <c:forEach var="itemSelecionado" items="${target.instanciasVariavel}">
+                                        <c:if test="${itemSelecionado.fatorChar == key.instanciasVariavel[i.index].fatorChar}">
+                                            <c:set var="checarItem" value="true"/>
+                                        </c:if>
+                                    </c:forEach>
+                                    <c:set var="widthCol" value="${component.key.width-10}px"/>
+                                    <td class="boxOrRadio"
+                                        style="width:${widthCol}; max-width:${widthCol}; min-width:${widthCol}">
+                                        <input type="radio"
+                                               <c:if test="${component.readonly}">disabled="true"</c:if>
+                                               <c:if test="${checarItem}">checked="true"</c:if>
+                                               class="grid-item-selected" name="${acao.id}"
+                                               value="${key.instanciasVariavel[i.index].fatorChar}"/>
+                                    </td>
+                                </c:when>
+                            </c:choose>
+                            <c:forEach var="columnValue" items="${columns}" varStatus="j">
+                                <td
+                                        <c:if test="${j.index != qtdColunas-1}">style="width:${component.columns[columnValue.nome].width-10}px; max-width:${component.columns[columnValue.nome].width-10}px; min-width:${component.columns[columnValue.nome].width-10}px"</c:if>>
+                                    <c:choose>
+                                        <c:when test="${j.index != qtdColunas-1}">
+                                            <div style="width:${component.columns[columnValue.nome].width-10}px; overflow: hidden;">
+                                                <c:choose>
+                                                    <c:when test="${columnValue.tipoDado.value == binario}">
+                                                        <div style="text-align: center; width: 100%;">
+                                                            <c:url var="downloadFile"
+                                                                   value="/ajax/processos/step/downloadanexo.action">
+                                                                <c:param name="idInstanciaVar"
+                                                                         value="${columnValue.instanciasVariavel[i.index].id}"/>
+                                                            </c:url>
+                                                                ${customfn:fileNameAnexo(columnValue.instanciasVariavel[i.index].fatorChar, true)}
+                                                            -
+                                                            <a href="${downloadFile}"
+                                                               title="<fmt:message key="title.download.arquivo"/>"
+                                                            target="auxiliar-download-anexo">
+                                                            <img src="<c:url value="/img/download.png"/>"/>
+                                                            </a>
+                                                        </div>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${columnValue.instanciasVariavel[i.index].fatorChar}
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div style="width:${component.columns[columnValue.nome].width-32}px; overflow: hidden;">
+                                                <c:choose>
+                                                    <c:when test="${columnValue.tipoDado.value == binario}">
+                                                        <div style="text-align: center; width: 100%;">
+                                                            <c:url var="downloadFile"
+                                                                   value="/ajax/processos/step/downloadanexo.action">
+                                                                <c:param name="idInstanciaVar"
+                                                                         value="${columnValue.instanciasVariavel[i.index].id}"/>
+                                                            </c:url>
+                                                                ${customfn:fileNameAnexo(columnValue.instanciasVariavel[i.index].fatorChar, true)}
+                                                            -
+                                                            <a href="${downloadFile}"
+                                                               title="<fmt:message key="title.download.arquivo"/>"
+                                                            target="auxiliar-download-anexo">
+                                                            <img src="<c:url value="/img/download.png"/>"/>
+                                                            </a>
+                                                        </div>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${columnValue.instanciasVariavel[i.index].fatorChar}
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </td>
+                            </c:forEach>
+                        </tr>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <c:if test="${not empty component.key}">
+                        <c:set var="qtdColunas" value="${qtdColunas + 1}"/>
+                    </c:if>
+                    <tr>
+                        <td colspan="${qtdColunas}">
+                            <fmt:message key="msg.nenhum.registro"/>
+                        </td>
+                    </tr>
+                </c:otherwise>
+            </c:choose>
+            </tbody>
+        </table>
+    </div>
+</div>

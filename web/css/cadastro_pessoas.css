@@ -1,0 +1,15 @@
+.tipoMilitar
+{
+    text-align: center;
+    padding: 30px;
+}
+
+.tipoMilitarSelecionado
+{
+    display: none;
+}
+
+#window
+{
+    display: none;
+}

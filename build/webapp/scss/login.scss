@@ -1,0 +1,78 @@
+@import "variables.scss";
+@import "mixins";
+@import "compass/css3";
+
+$height-login : 370px;
+$width-login : 480px;
+
+#container-center
+  {
+  @include size($height-login, $width-login);
+  @include absolute(50%, null, null, 50%);
+  @include margin(-($height-login/2)+30, null, null, -($width-login/2));
+  border : 1px solid $color-09;
+  background : $color-17 url('../img/bg-login.png') repeat-x;
+
+  .title
+    {
+    padding : 10px;
+
+    table
+      {
+      padding       : 20px;
+      font-size     : 24px;
+      width         : 100%;
+      border-bottom : 1px solid $color-09;
+    }
+  }
+
+  .body
+    {
+    padding : 20px;
+
+    table.cadastro
+      {
+      width       : auto;
+      padding-top : 10px;
+      cursor      : pointer;
+
+      img
+        {
+        opacity : .8;
+
+      }
+
+      &:hover
+        {
+        img
+          {
+          opacity : 1;
+        }
+
+        a
+          {
+          color : $color-12;
+        }
+      }
+    }
+
+    table
+      {
+      font-size    : $default-font-size;
+      font-weight  : bold;
+      padding-left : 20px;
+      width        : 100%;
+
+      a
+        {
+        font-size       : 11px;
+        text-decoration : underline;
+      }
+    }
+  }
+}
+
+.smaller
+  {
+  font-size : 16px;
+}

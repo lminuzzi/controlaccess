@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<decorators defaultdir="/WEB-INF/views/templates/">
+
+    <decorator name="noapply">
+        <pattern>/ajax/*</pattern>
+    </decorator>
+
+    <decorator name="portal" page="template.jsp">
+        <pattern>*</pattern>
+    </decorator>
+
+</decorators>

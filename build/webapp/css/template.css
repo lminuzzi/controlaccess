@@ -1,0 +1,111 @@
+/* line 6, ../scss/template.scss */
+#container-top {
+  width: 100%;
+  height: 30px;
+  background: black;
+  border-bottom: 1px solid #444444;
+  color: #999999;
+}
+/* line 14, ../scss/template.scss */
+#container-top div {
+  margin: 4px 20px 0 0;
+}
+
+/* line 22, ../scss/template.scss */
+#container-top a, #container-title a {
+  color: #999999;
+  text-decoration: none;
+  font-weight: bold;
+}
+/* line 28, ../scss/template.scss */
+#container-top a:hover, #container-title a:hover {
+  color: white;
+}
+
+/* line 35, ../scss/template.scss */
+#container-title {
+  width: 100%;
+  height: 60px;
+  background: transparent url("../img/bg_menu.png") repeat-x;
+  border-bottom: 1px solid white;
+}
+/* line 42, ../scss/template.scss */
+#container-title div {
+  padding: 5px 10px 5px 10px;
+}
+
+/* line 48, ../scss/template.scss */
+#search {
+  margin: 13px 20px 0 0;
+  height: 30px;
+  width: 252px;
+  background: transparent url("../img/bg_search.png") no-repeat;
+}
+/* line 54, ../scss/template.scss */
+#search input {
+  margin: 0 0 0 40px;
+  background: transparent;
+  border: 0;
+  width: 180px;
+  color: #999999;
+  font-weight: normal;
+  font-style: italic;
+}
+
+/* line 66, ../scss/template.scss */
+#container-bottom {
+  height: 25px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: url("../img/bg-bottom.jpg") repeat-x;
+  border-top: 1px solid white;
+  text-align: center;
+}
+/* line 74, ../scss/template.scss */
+#container-bottom a {
+  color: #aaaaaa;
+}
+/* line 78, ../scss/template.scss */
+#container-bottom a:hover {
+  color: white;
+}
+/* line 84, ../scss/template.scss */
+#container-bottom div {
+  padding-top: 7px;
+  color: #777777;
+  font-size: 10px;
+}
+
+/* line 92, ../scss/template.scss */
+.separator {
+  padding: 0 15px 0 15px;
+  color: #999999;
+}
+
+/* line 99, ../scss/template.scss */
+.autocompleteSearch {
+  background: #0b0b0b;
+  border: 2px solid #aaaaaa;
+}
+/* line 105, ../scss/template.scss */
+.autocompleteSearch .ui-autocomplete-category {
+  color: #f6640a;
+  font-size: 90%;
+}
+/* line 114, ../scss/template.scss */
+.autocompleteSearch .ui-menu-item a {
+  color: white !important;
+  padding-left: 5px;
+}
+/* line 122, ../scss/template.scss */
+.autocompleteSearch .ui-state-focus {
+  background: #666666;
+  border: 1px solid #aaaaaa;
+}
+/* line 128, ../scss/template.scss */
+.autocompleteSearch .divisorCategory {
+  border-top: 1px solid #aaaaaa;
+  margin-left: 10px;
+  margin-right: 10px;
+}

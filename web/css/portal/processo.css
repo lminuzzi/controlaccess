@@ -1,0 +1,62 @@
+/* line 5, ../../scss/portal/processo.scss */
+#container-content {
+  position: absolute;
+  top: 143px;
+  right: 425px;
+  bottom: 45px;
+  left: 90px;
+}
+
+/* line 11, ../../scss/portal/processo.scss */
+input, select, textarea {
+  border: 1px solid #999999;
+}
+
+/* line 15, ../../scss/portal/processo.scss */
+.div-radio, .anexo-listagem {
+  overflow: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  border: 1px solid #999999;
+}
+
+/* line 25, ../../scss/portal/processo.scss */
+input[type=text].campo-obrigatorio, input[type=password].campo-obrigatorio {
+  border: 2px solid #f6640a;
+}
+
+/* line 31, ../../scss/portal/processo.scss */
+.campo-obrigatorio {
+  border: 2px solid #f6640a;
+}
+
+/* line 36, ../../scss/portal/processo.scss */
+div.campo-obrigatorio {
+  border: 2px solid #f6640a;
+}
+
+/* line 40, ../../scss/portal/processo.scss */
+.truncate {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -moz-binding: url(ellipsis.xml#ellipsis);
+  overflow: hidden;
+}
+
+/* line 47, ../../scss/portal/processo.scss */
+.div-step-buttons {
+  position: absolute;
+  padding: 10px 5px 10px 5px;
+}
+
+/* line 53, ../../scss/portal/processo.scss */
+#button-remove-processo {
+  background: #e57d82;
+  color: #7f0800;
+  border: 1px solid #e52f2d;
+  opacity: 0.8;
+}
+/* line 59, ../../scss/portal/processo.scss */
+#button-remove-processo:hover {
+  opacity: 1;
+}

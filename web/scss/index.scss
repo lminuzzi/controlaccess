@@ -1,0 +1,79 @@
+@import "variables";
+@import "mixins";
+
+#container-header
+  {
+  height     : $height-header;
+  border     : 1px solid $color-09;
+  background : $color-10;
+  @include absolute($top-header, $padding-header, null, $padding-header);
+
+  div
+    {
+    padding : 5px 8px 5px 8px;
+  }
+
+  h2
+    {
+    font-size   : 14px;
+    font-weight : bold;
+    margin-top  : 4px;
+    display     : block;
+  }
+}
+
+#container-content
+  {
+  background : $color-03;
+  border     : 1px solid $color-09;
+  overflow-y : auto;
+  @include absolute($top-header + $height-header, $padding-header, $height-bottom + $padding-header + $height-details, $padding-header);
+}
+
+#div-nav
+  {
+  padding : 10px;
+
+  a
+    {
+    color           : $color-11;
+    text-decoration : underline;
+    font-weight     : bold;
+
+    &:hover
+      {
+      color : $color-12;
+    }
+  }
+}
+
+.nav-selected
+  {
+  font-weight : bold;
+}
+
+#div-details
+  {
+  border     : 1px solid $color-09;
+  height     : $height-details;
+  background : $color-10;
+  overflow-y : auto;
+  @include absolute(null, $padding-header, $height-bottom + $padding-header, $padding-header);
+
+  div.title
+    {
+    padding     : 10px;
+    font-weight : bold;
+  }
+
+  div.tooltip
+    {
+    @include padding(null, 10px, 10px, 10px);
+  }
+
+  table
+    {
+    width : 100%;
+  }
+}
+

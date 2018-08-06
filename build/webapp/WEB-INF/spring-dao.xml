@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="instituicaoJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.ParInstituicaoJdbcDao">
+        <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="menuJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnMenuJdbcDao">
+        <constructor-arg ref="jdbcTemplate"/>
+    </bean>
+
+    <bean id="elementoJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnElementoJdbcDao">
+        <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="usuarioJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.UsuarioJdbcDao">
+        <constructor-arg index="0" ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="instanciaJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnInstanciaJdbcDao">
+        <constructor-arg index="0" ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="mapaNavegacaoJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnMapaNavegacaoJdbcDao">
+        <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="acaoJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnAcaoJdbcDao">
+        <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="variavelJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnVariavelJdbcDao">
+        <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="instanciaElementoJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnInstanciaElementoJdbcDao">
+        <constructor-arg index="0" ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="errorInstanciaJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnErrorInstanciaJdbcDao">
+        <constructor-arg ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="instanciaVariavelJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnInstanciaVariavelJdbcDao">
+        <constructor-arg index="0" ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="instanciaMarcadorLeituraJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnInstanciaMarcadorLeituraJdbcDao">
+        <constructor-arg index="0" ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+    <bean id="instanciaSendJdbcDao" class="br.com.avmb.bpmn.dao.jdbc.BpmnInstanciaSendJdbcDao">
+        <constructor-arg index="0" ref="jdbcTemplate"/>
+        <constructor-arg index="1" value="${si.default.user}"/>
+    </bean>
+
+</beans>
+

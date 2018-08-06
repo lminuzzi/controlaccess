@@ -1,0 +1,45 @@
+CREATE OR REPLACE FUNCTION "DBSM"."FBPMN_GET_TREE_MENU" (idmenu in number)  
+return varchar2 as  
+   
+    tree varchar2(100) := null; 
+    soma number := 0; 
+    lengthtitle number := 0; 
+    lengthtree number := 0; 
+    contem number := 0; 
+ 
+    cursor cursor_menu(idmenu number) is 
+        select  
+            m.title as title 
+        from 
+            dbsm.bpmn_menu m 
+            connect by prior m.id_sup = m.id_menu start with m.id_menu = idmenu; 
+    c cursor_menu%rowtype; 
+ 
+begin 
+    open cursor_menu(idmenu); 
+    loop fetch cursor_menu into c; 
+        exit when cursor_menu%notfound; 
+        if tree is null then 
+            tree := c.title; 
+        else
+            contem := (instr( tree , '...' ));
+            if contem = 0 then 
+                lengthtree := length(tree);
+                lengthtitle := length(c.title); 
+                soma := lengthtree + lengthtitle; 
+ --               dbms_output.put_line('soma: ' || soma);
+                if soma < 50 then 
+                    tree := c.title || ' » ' || tree; 
+--                    dbms_output.put_line('entrou no if: ' || tree);
+                else 
+                        tree := '...' || tree; 
+--                        dbms_output.put_line('entrou no else: ' || tree);
+--                        contem:=1;
+                end if; 
+            end if; 
+        end if; 
+    end loop; 
+--    tree := substr(tree, 0, length(tree)-3); 
+    return lower(tree); 
+ 
+end fbpmn_get_tree_menu;

@@ -1,0 +1,44 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<!-- TODO: falta verificar para trazer marcado ou não por padrão, aplicação desktop não contempla essa funcionalidade ainda -->
+
+<c:if test="${not empty fcDestino}">
+    <c:set var="dado" value="${fcDestino}"/>
+</c:if>
+
+<c:set var="valorChecked" value="${campo.valorChecked}"/>
+
+<table cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="width: 5px">
+            <input type="checkbox"
+                   id="${acao.id}"
+                   name="${acao.id}"
+                   style="margin-left: 0px;"
+                   variavel="${campo.destino.id}"
+                   valorchecked="${valorChecked}"
+                   valorunchecked="${campo.valorUnchecked}"
+                    <c:if test="${campo.readonly}">
+                        disabled="disabled"
+                        readonly="readonly"
+                    </c:if>
+                    <c:if test="${dado == valorChecked}">
+                        checked="checked"
+                    </c:if>/>
+        </td>
+        <td>
+            <c:choose>
+                <c:when test="${not empty campo.hint}">
+                    <tag:hint id="${acao.id}" text="${campo.hint}">
+                        <tag:label label="${campo.descricao}" lineBreak="true" cursorPointer="true"
+                                     required="${campo.required}" fixed="${acao.id}"/>
+                    </tag:hint>
+                </c:when>
+                <c:otherwise>
+                    <tag:label label="${campo.descricao}" lineBreak="true" required="${campo.required}"
+                                 fixed="${acao.id}"/>
+                </c:otherwise>
+            </c:choose>
+        </td>
+    </tr>
+</table>

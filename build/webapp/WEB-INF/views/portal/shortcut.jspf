@@ -1,0 +1,24 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<div class="shortcut shadow">
+    <table cellspacing="5" cellpadding="5">
+        <tbody>
+        <tr>
+            <td>
+                <a href="<c:url value="/"/>" title="Início">
+                    <img src="<c:url value="/img/home.png"/>" alt="">
+                </a>
+            </td>
+        </tr>
+        <c:forEach items="${toolBars}" var="toolBar">
+            <tr>
+                <td>
+                    <a href="<c:url value="/portal/processo/${toolBar['ID_VERSAO']}"/>" title="${toolBar['TOOLTIP']}">
+                        <img src="<c:url value="/menuimg/${toolBar['ID_MENU']}"/>" alt=""/>
+                    </a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>

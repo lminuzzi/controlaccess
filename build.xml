@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="portal" default="dist" basedir=".">
+
+    <tstamp/>
+    <property file="${basedir}/build.properties"/>
+    <property file="${basedir}/default.properties"/>
+
+    <filter token="PROJECT.NAME" value="${project.name}"/>
+    <filter token="PROJECT.NAME.LONG" value="${project.name.long}"/>
+    <filter token="PROJECT.VERSION" value="${project.version}"/>
+    <filter token="PROJECT.VERSION.LONG" value="${project.version.long}"/>
+    <filter token="PROJECT.DESCRIPTION" value="${project.description}"/>
+    <filter token="PROJECT.PUBLISHER" value="${project.publisher}"/>
+    <filter token="PROJECT.COPYRIGHT" value="${project.copyright}"/>
+
+    <filter token="JAVACOMBRIDGE.SERVER" value="${javacombridge.server}"/>
+    <filter token="CONTEXTO.ALIAS" value="${contexto.alias}"/>
+
+    <filter token="JNDI.DATASOURCE" value="${jndi.datasource}"/>
+
+    <filter token="DEVELOPMENT" value="${development}"/>
+
+    <filter token="SI.DEFAULT.USER" value="${si.default.user}"/>
+
+    <filter token="TAMANHO.ARQUIVOS.UPLOAD" value="${tamanho.arquivos.upload}"/>
+    <filter token="TAMANHO.EXTENSAO.ANEXO" value="${tamanho.extensao.anexo}"/>
+
+    <path id="build.classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean" description="Removes the folders and temp files">
+        <delete dir="${build.dir}"/>
+        <delete dir="${dist.dir}"/>
+        <delete dir="${build.webapp.dir}"/>
+    </target>
+
+    <target name="compile" description="Compiles the sources">
+
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.classes.dir}"/>
+
+        <!--
+		<unjar dest="${build.classes.dir}">
+			<fileset dir="${lib.dir}/include">
+				<include name="**/*.jar"/>
+			</fileset>
+		</unjar>
+		-->
+
+        <javac srcdir="${src.java.dir}"
+               destdir="${build.classes.dir}"
+               encoding="${src.encoding}"
+               source="${src.source}"
+               target="${src.target}"
+               optimize="${build.compiler.optimize}"
+               debug="${build.compiler.debug}"
+               debuglevel="${build.compiler.debuglevel}"
+               deprecation="${build.compiler.deprecation}"
+               classpathref="build.classpath"
+               includeantruntime="false"
+               includejavaruntime="false">
+            <compilerarg line="${build.compiler.args}"/>
+        </javac>
+
+        <copy todir="${build.classes.dir}" encoding="${src.encoding}" overwrite="true">
+            <fileset dir="${src.java.dir}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+    <target name="webapp" depends="compile" description="Creates the folder with the web application">
+
+        <copy tofile="${build.manifest.file}" file="${conf.manifest.file}"
+              encoding="${src.encoding}" filtering="true" overwrite="true"/>
+
+        <mkdir dir="${build.webapp.dir}"/>
+
+        <copy todir="${build.webapp.dir}" filtering="true"
+              overwrite="true" encoding="${src.encoding}">
+            <fileset dir="${src.web.dir}"/>
+        </copy>
+
+        <mkdir dir="${build.webapp.dir}/WEB-INF/lib"/>
+
+        <copy todir="${build.webapp.dir}/WEB-INF/lib"
+              encoding="${src.encoding}" overwrite="true">
+            <fileset dir="${lib.runtime.dir}"/>
+        </copy>
+
+        <!-- Move file from the WEB-INF for classes, the JAWR works only if the file is in /WEB-INF/classes -->
+        <move file="${build.webapp.dir}/WEB-INF/jawr.properties" todir="${build.classes.dir}"/>
+
+    </target>
+
+    <target name="war" depends="webapp" description="Creates the .war file with the web application">
+
+        <mkdir dir="${dist.dir}"/>
+
+        <war destfile="${dist.war}"
+             basedir="${build.webapp.dir}"
+             excludes="**/WEB-INF/web.xml"
+             webxml="${build.webapp.dir}/WEB-INF/web.xml"
+             compress="${dist.war.compress}"
+             encoding="${src.encoding}"
+             manifest="${build.manifest.file}"
+             manifestencoding="${src.encoding}"/>
+
+    </target>
+
+    <target name="dist" depends="clean, war" description="Creates the complete distribution">
+
+        <copy todir="${dist.dir}" encoding="${src.encoding}" overwrite="true">
+            <fileset dir="${basedir}" includes="${dist.docs.files}"/>
+        </copy>
+
+        <fixcrlf srcdir="${dist.dir}"
+                 includes="${dist.docs.files}"
+                 eol="crlf"/>
+
+    </target>
+
+    <target name="deploy" depends="webapp" description="Install the web application in server">
+        <copy todir="${deploy.dir}" encoding="${src.encoding}" overwrite="true">
+            <fileset dir="${build.webapp.dir}"/>
+        </copy>
+    </target>
+
+    <target name="deployClean" description="Clears the web aplication in server">
+        <delete dir="${deploy.dir}"/>
+    </target>
+
+</project>

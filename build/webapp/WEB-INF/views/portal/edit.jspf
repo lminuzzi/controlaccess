@@ -1,0 +1,78 @@
+<%@ include file="/WEB-INF/views/include/heads.jspf" %>
+
+<c:choose>
+    <c:when test="${empty fcDestino}">
+        <c:set var="dado" value="${fcOrigem}"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="dado" value="${fcDestino}"/>
+    </c:otherwise>
+</c:choose>
+
+<c:set var="fieldLength" value="${component.maxlength}"/>
+<c:set var="obrigatorio" value="${component.required}"/>
+
+<c:choose>
+    <c:when test="${not empty component.hint}">
+        <tag:hint id="${acao.id}" text="${component.hint}">
+            <tag:label label="${component.description}" cursorPointer="true" lineBreak="true" required="${component.required}"/>
+        </tag:hint>
+    </c:when>
+    <c:otherwise>
+        <tag:label label="${component.description}" lineBreak="true" required="${component.required}"/>
+    </c:otherwise>
+</c:choose>
+
+<%-- Alinhamento com o componente do delphi --%>
+<c:set var="fieldSize" value="${fieldSize - 7}"/>
+
+<div style="white-space: nowrap;">
+    <c:choose>
+        <c:when test="${campo.tipoDado.value == 'N'}">
+            <input id="${acao.id}" name="${acao.id}" type="text" value="${fn:replace(dado, ",", ".")}"
+                   variavel="${component.target.id}"
+                   class="numeric obrigatorio"
+                   style="width: ${fieldSize}px;"
+                    <c:if test="${not empty fieldLength}">
+                        maxlength="${fieldLength}"
+                    </c:if>
+                   fieldMask="${component.mask}"
+                   obrigatorio="${obrigatorio}"
+                    <c:if test="${component.readonly}">
+                        readonly="readonly"
+                    </c:if>/>
+
+        </c:when>
+        <c:when test="${campo.tipoDado.value == 'D'}">
+            <input id="${acao.id}" name="${acao.id}" type="text" value="${dado}"
+                   variavel="${component.target.id}"
+                   style="width: ${fieldSize}px;"
+                    <c:if test="${not empty fieldLength}">
+                        maxlength="${fieldLength}"
+                    </c:if>
+                    <c:choose>
+                        <c:when test="${component.readonly}">
+                            readonly="readonly"
+                        </c:when>
+                        <c:otherwise>
+                            class="mask date obrigatorio" fieldMask="99/99/9999"
+                        </c:otherwise>
+                    </c:choose>
+                   obrigatorio="${obrigatorio}"/>
+
+        </c:when>
+        <c:otherwise>
+            <input id="${acao.id}" name="${acao.id}" type="text" value="${dado}"
+                   style="width: ${fieldSize}px;"
+                   variavel="${component.target.id}" class="mask obrigatorio"
+                    <c:if test="${not empty fieldLength}">
+                        maxlength="${fieldLength}"
+                    </c:if>
+                   fieldMask="${component.mask}" obrigatorio="${obrigatorio}"
+                    <c:if test="${component.readonly}">
+                        readonly="readonly"
+                    </c:if>/>
+
+        </c:otherwise>
+    </c:choose>
+</div>

@@ -1,0 +1,214 @@
+@import "variables.scss";
+@import "mixins";
+@import "compass/css3";
+
+@mixin campos-default {
+  color: $color-01;
+}
+
+@mixin campos-readonly-default {
+  color: $color-14;
+  background-color: $color-19;
+  border: 1px solid $color-09;
+}
+
+html {
+  font-family: $default-font;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: $bg-body;
+  color: $default-color;
+  font-weight: normal;
+  font-size: $default-font-size;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.shadow {
+  @include box-shadow($default-color 3px 3px 4px);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.corner {
+  @include border-radius(5px);
+}
+
+a {
+  color: $color-11;
+
+  &:hover {
+    color: $color-12;
+  }
+}
+
+.ui-widget
+  {
+  font-size : 95%;
+}
+
+.hide {
+  display: none;
+}
+
+.lower {
+  text-transform: lowercase;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.required {
+  color: red;
+  font-weight: bold;
+}
+
+div.grid {
+  $padding: 5px;
+  $solid1px: 1px solid;
+  $estiloLinhasBorda: $solid1px $color-09;
+  $heightHead: 20px;
+
+  @include campos-default;
+
+  border: $estiloLinhasBorda;
+  position: relative;
+  table {
+    thead {
+      @include background(linear-gradient($color-14, $color-15));
+      span {
+        color: $color-23;
+      }
+      tr {
+        th {
+          height: $heightHead;
+          border-right: $estiloLinhasBorda;
+          padding: $padding;
+          color: $color-03;
+          &:last-child {
+            border-right: none;
+          }
+          &.boxOrRadio {
+            width: 30px;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        background: $color-03;
+        &.zebra {
+          background: $color-03;
+        }
+        &:last-child {
+          > th {
+            border-bottom: none;
+          }
+        }
+        td {
+          padding: $padding;
+          border-top: $estiloLinhasBorda;
+          border-right: $estiloLinhasBorda;
+          &:last-child {
+            border-right: none;
+          }
+          &.boxOrRadio {
+            text-align: center;
+          }
+        }
+        &:first-child {
+          > td {
+            border-top: none;
+          }
+        }
+        &.linhaSelecionada {
+          background: $color-19;
+        }
+      }
+    }
+  }
+  div {
+    &.header {
+      display: block;
+    }
+    &.content {
+      border-top: $estiloLinhasBorda;
+      position: absolute;
+      overflow-y: auto;
+      bottom: 0px;
+      top: $heightHead + ($padding * 2);
+    }
+  }
+  .div-checkbox {
+    margin-left: 8px;
+  }
+
+  &[readonly] {
+     table {
+       thead {
+         opacity: .6;
+       }
+     }
+  }
+}
+
+div[readonly] {
+  @include campos-readonly-default;
+}
+
+input {
+  @include campos-default;
+}
+
+textarea {
+  @include campos-default;
+  &[readonly] {
+    @include campos-readonly-default;
+  }
+}
+
+select {
+  @include campos-default;
+  &[readonly] {
+    @include campos-readonly-default;
+  }
+}
+
+.carregando
+{
+  display     : none;
+  position    : fixed;
+  left        : 50%;
+  margin-left : -75px;
+  top         : 0;
+  padding     : 5px 10px;
+  @include border-bottom-radius(5px);
+  font-weight : bold;
+  @include box-shadow($color-21 3px 3px 4px);
+  background-color : $color-20;
+  color            : $color-01;
+}

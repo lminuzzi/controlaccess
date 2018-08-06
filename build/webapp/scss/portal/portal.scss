@@ -1,0 +1,158 @@
+@import "../variables";
+@import "../mixins";
+@import "compass/css3";
+
+.shortcut
+{
+  padding : 10px;
+  width   : $width-shortcut;
+  @include fixed(110px, null, null, 0);
+  @include background(linear-gradient($color-07, $color-08));
+  @include border-right-radius(5px);
+}
+
+.tipsy
+{
+  margin-left : 25px;
+}
+
+#container-header
+{
+  height     : $height-header;
+  border     : 1px solid $color-09;
+  background : $color-10;
+  @include absolute($top-header, $width-grid + $padding-header + 5, null, $left-header);
+
+  div
+  {
+    padding : 5px 8px 5px 8px;
+  }
+
+  h2
+  {
+    font-size   : 14px;
+    font-weight : bold;
+    margin-top  : 4px;
+    display     : block;
+  }
+}
+
+#container-grid
+{
+  width      : $width-grid;
+  border     : 3px solid $color-09;
+  color      : $color-04;
+  @include absolute($top-header, $padding-header, $height-bottom + $padding-header, null);
+  overflow   : auto;
+  background : $color-01 url('../../img/bg_andamento.png') repeat-x;
+
+  tr
+  {
+
+    th
+    {
+      &:hover
+      {
+        cursor : default;
+      }
+    }
+  }
+
+  tbody tr
+  {
+    &:hover
+    {
+      background-color : $color-16;
+      cursor           : pointer;
+    }
+  }
+
+  th
+  {
+    text-align    : left;
+    white-space   : nowrap;
+    overflow      : hidden;
+    padding       : 7px;
+    border-bottom : 1px solid $color-14;
+    color         : $color-03;
+  }
+
+  td
+  {
+    font-weight   : bold;
+    padding       : 7px;
+    white-space   : nowrap;
+    overflow      : hidden;
+    border-bottom : 1px solid $color-14;
+  }
+}
+
+#container-content
+{
+  background : $color-03;
+  border     : 1px solid $color-09;
+  overflow-y : auto;
+  @include absolute($top-header + $height-header, $width-grid + $padding-header + 5, $height-bottom + $padding-header + $height-details, $left-header);
+}
+
+#div-nav
+{
+  padding : 10px;
+
+  a
+  {
+    color           : $color-11;
+    text-decoration : underline;
+    font-weight     : bold;
+
+    &:hover
+    {
+      color : $color-12;
+    }
+  }
+}
+
+.nav-selected
+{
+  font-weight : bold;
+}
+
+#div-details
+{
+  border     : 1px solid $color-09;
+  height     : $height-details;
+  background : $color-10;
+  overflow-y : auto;
+  @include absolute(null, $width-grid+ $padding-header + 5, $height-bottom + $padding-header, $left-header);
+
+  div.title
+  {
+    padding     : 10px;
+    font-weight : bold;
+  }
+
+  div.tooltip
+  {
+    @include padding(null, 10px, 10px, 10px);
+  }
+
+  table
+  {
+    width : 100%;
+  }
+}
+
+#div-show-hide
+{
+  float   : right;
+  cursor  : pointer;
+  opacity : .7;
+  padding : 5px;
+
+  &:hover
+  {
+    opacity : 1;
+  }
+}
+
+

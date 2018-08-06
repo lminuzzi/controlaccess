@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="instituicaoService" class="br.com.avmb.bpmn.service.ParInstituicaoService">
+        <constructor-arg ref="instituicaoJdbcDao"/>
+    </bean>
+
+    <bean id="menuService" class="br.com.avmb.bpmn.service.BpmnMenuService">
+        <constructor-arg ref="menuJdbcDao"/>
+    </bean>
+
+    <bean id="usuarioService" class="br.com.avmb.bpmn.service.UsuarioService">
+        <constructor-arg ref="usuarioJdbcDao"/>
+    </bean>
+
+    <bean id="lockoutService" class="br.com.avmb.lib.service.LockoutService"/>
+
+    <bean id="authenticationService" class="br.com.avmb.bpmn.service.AuthenticationService">
+        <property name="usuarioService" ref="usuarioService"/>
+        <property name="lockoutService" ref="lockoutService"/>
+        <property name="ldapAuthentication" value="false"/>
+    </bean>
+
+    <bean id="instanciaService" class="br.com.avmb.bpmn.service.BpmnInstanciaService">
+        <constructor-arg ref="instanciaJdbcDao"/>
+    </bean>
+
+    <bean id="mapaNavegacaoService" class="br.com.avmb.bpmn.service.BpmnMapaNavegacaoService">
+        <constructor-arg ref="mapaNavegacaoJdbcDao"/>
+        <property name="instanciaService" ref="instanciaService"/>
+    </bean>
+
+    <bean id="acaoService" class="br.com.avmb.bpmn.service.BpmnAcaoService">
+        <constructor-arg ref="acaoJdbcDao"/>
+    </bean>
+
+    <bean id="componentService" class="br.com.avmb.bpmn.service.BpmnComponentService">
+        <property name="acaoService" ref="acaoService"/>
+        <property name="variavelService" ref="variavelService"/>
+    </bean>
+
+    <bean id="elementoService" class="br.com.avmb.bpmn.service.BpmnElementoService">
+        <constructor-arg ref="elementoJdbcDao"/>
+    </bean>
+
+    <bean id="variavelService" class="br.com.avmb.bpmn.service.BpmnVariavelService">
+        <constructor-arg ref="variavelJdbcDao"/>
+    </bean>
+
+    <bean id="instanciaElementoService" class="br.com.avmb.bpmn.service.BpmnInstanciaElementoService">
+        <constructor-arg ref="instanciaElementoJdbcDao"/>
+    </bean>
+
+    <bean id="instanciaVariavelService" class="br.com.avmb.bpmn.service.BpmnInstanciaVariavelService">
+        <constructor-arg ref="instanciaVariavelJdbcDao"/>
+    </bean>
+
+    <bean id="errorInstanciaService" class="br.com.avmb.bpmn.service.BpmnErrorInstanciaService">
+        <constructor-arg ref="errorInstanciaJdbcDao"/>
+    </bean>
+
+    <bean id="instanciaMarcadorLeituraService" class="br.com.avmb.bpmn.service.BpmnInstanciaMarcadorLeituraService">
+        <constructor-arg ref="instanciaMarcadorLeituraJdbcDao"/>
+    </bean>
+
+    <bean id="instanciaSendService" class="br.com.avmb.bpmn.service.BpmnInstanciaSendService">
+        <constructor-arg ref="instanciaSendJdbcDao"/>
+    </bean>
+
+    <bean id="service" class="br.com.avmb.bpmn.service.BpmnService">
+        <property name="instanciaVariavelService" ref="instanciaVariavelService"/>
+        <property name="instanciaElementoService" ref="instanciaElementoService"/>
+        <property name="instanciaMarcadorLeituraService" ref="instanciaMarcadorLeituraService"/>
+        <property name="instanciaSendService" ref="instanciaSendService"/>
+    </bean>
+
+    <!-- COM Services -->
+
+    <bean id="instanciaCOMService" class="br.com.avmb.bpmn.service.com.BpmnInstanciaCOMService">
+        <constructor-arg value="${javacombridge.server}"/>
+    </bean>
+
+</beans>
+
